@@ -1,0 +1,188 @@
+[
+{
+  "directory": "D:/GD32/code/gd32F303_Cmake/build",
+  "command": "D:\\APP\\STM32CubeCLT_1.18.0\\GNU-tools-for-STM32\\bin\\arm-none-eabi-gcc.exe -DGD32F30X_HD -DGD_ECLIPSE_GCC -DUSE_STDPERIPH_DRIVER -ID:/GD32/code/gd32F303_Cmake/inc -ID:/GD32/code/gd32F303_Cmake/Firmware/CMSIS -ID:/GD32/code/gd32F303_Cmake/Firmware/CMSIS/GD/GD32F30x/Include -ID:/GD32/code/gd32F303_Cmake/Firmware/GD32F30x_standard_peripheral/Include -mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=hard -Wall -fdata-sections -ffunction-sections -O0 -g -g -o CMakeFiles\\gd32F303_Cmake.elf.dir\\src\\gd32f307c_eval.c.obj -c D:\\GD32\\code\\gd32F303_Cmake\\src\\gd32f307c_eval.c",
+  "file": "D:\\GD32\\code\\gd32F303_Cmake\\src\\gd32f307c_eval.c",
+  "output": "CMakeFiles\\gd32F303_Cmake.elf.dir\\src\\gd32f307c_eval.c.obj"
+},
+{
+  "directory": "D:/GD32/code/gd32F303_Cmake/build",
+  "command": "D:\\APP\\STM32CubeCLT_1.18.0\\GNU-tools-for-STM32\\bin\\arm-none-eabi-gcc.exe -DGD32F30X_HD -DGD_ECLIPSE_GCC -DUSE_STDPERIPH_DRIVER -ID:/GD32/code/gd32F303_Cmake/inc -ID:/GD32/code/gd32F303_Cmake/Firmware/CMSIS -ID:/GD32/code/gd32F303_Cmake/Firmware/CMSIS/GD/GD32F30x/Include -ID:/GD32/code/gd32F303_Cmake/Firmware/GD32F30x_standard_peripheral/Include -mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=hard -Wall -fdata-sections -ffunction-sections -O0 -g -g -o CMakeFiles\\gd32F303_Cmake.elf.dir\\src\\gd32f30x_it.c.obj -c D:\\GD32\\code\\gd32F303_Cmake\\src\\gd32f30x_it.c",
+  "file": "D:\\GD32\\code\\gd32F303_Cmake\\src\\gd32f30x_it.c",
+  "output": "CMakeFiles\\gd32F303_Cmake.elf.dir\\src\\gd32f30x_it.c.obj"
+},
+{
+  "directory": "D:/GD32/code/gd32F303_Cmake/build",
+  "command": "D:\\APP\\STM32CubeCLT_1.18.0\\GNU-tools-for-STM32\\bin\\arm-none-eabi-gcc.exe -DGD32F30X_HD -DGD_ECLIPSE_GCC -DUSE_STDPERIPH_DRIVER -ID:/GD32/code/gd32F303_Cmake/inc -ID:/GD32/code/gd32F303_Cmake/Firmware/CMSIS -ID:/GD32/code/gd32F303_Cmake/Firmware/CMSIS/GD/GD32F30x/Include -ID:/GD32/code/gd32F303_Cmake/Firmware/GD32F30x_standard_peripheral/Include -mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=hard -Wall -fdata-sections -ffunction-sections -O0 -g -g -o CMakeFiles\\gd32F303_Cmake.elf.dir\\src\\main.c.obj -c D:\\GD32\\code\\gd32F303_Cmake\\src\\main.c",
+  "file": "D:\\GD32\\code\\gd32F303_Cmake\\src\\main.c",
+  "output": "CMakeFiles\\gd32F303_Cmake.elf.dir\\src\\main.c.obj"
+},
+{
+  "directory": "D:/GD32/code/gd32F303_Cmake/build",
+  "command": "D:\\APP\\STM32CubeCLT_1.18.0\\GNU-tools-for-STM32\\bin\\arm-none-eabi-gcc.exe -DGD32F30X_HD -DGD_ECLIPSE_GCC -DUSE_STDPERIPH_DRIVER -ID:/GD32/code/gd32F303_Cmake/inc -ID:/GD32/code/gd32F303_Cmake/Firmware/CMSIS -ID:/GD32/code/gd32F303_Cmake/Firmware/CMSIS/GD/GD32F30x/Include -ID:/GD32/code/gd32F303_Cmake/Firmware/GD32F30x_standard_peripheral/Include -mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=hard -Wall -fdata-sections -ffunction-sections -O0 -g -g -o CMakeFiles\\gd32F303_Cmake.elf.dir\\src\\systick.c.obj -c D:\\GD32\\code\\gd32F303_Cmake\\src\\systick.c",
+  "file": "D:\\GD32\\code\\gd32F303_Cmake\\src\\systick.c",
+  "output": "CMakeFiles\\gd32F303_Cmake.elf.dir\\src\\systick.c.obj"
+},
+{
+  "directory": "D:/GD32/code/gd32F303_Cmake/build",
+  "command": "D:\\APP\\STM32CubeCLT_1.18.0\\GNU-tools-for-STM32\\bin\\arm-none-eabi-gcc.exe -DGD32F30X_HD -DGD_ECLIPSE_GCC -DUSE_STDPERIPH_DRIVER -ID:/GD32/code/gd32F303_Cmake/inc -ID:/GD32/code/gd32F303_Cmake/Firmware/CMSIS -ID:/GD32/code/gd32F303_Cmake/Firmware/CMSIS/GD/GD32F30x/Include -ID:/GD32/code/gd32F303_Cmake/Firmware/GD32F30x_standard_peripheral/Include -mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=hard -Wall -fdata-sections -ffunction-sections -O0 -g -g -o CMakeFiles\\gd32F303_Cmake.elf.dir\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_adc.c.obj -c D:\\GD32\\code\\gd32F303_Cmake\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_adc.c",
+  "file": "D:\\GD32\\code\\gd32F303_Cmake\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_adc.c",
+  "output": "CMakeFiles\\gd32F303_Cmake.elf.dir\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_adc.c.obj"
+},
+{
+  "directory": "D:/GD32/code/gd32F303_Cmake/build",
+  "command": "D:\\APP\\STM32CubeCLT_1.18.0\\GNU-tools-for-STM32\\bin\\arm-none-eabi-gcc.exe -DGD32F30X_HD -DGD_ECLIPSE_GCC -DUSE_STDPERIPH_DRIVER -ID:/GD32/code/gd32F303_Cmake/inc -ID:/GD32/code/gd32F303_Cmake/Firmware/CMSIS -ID:/GD32/code/gd32F303_Cmake/Firmware/CMSIS/GD/GD32F30x/Include -ID:/GD32/code/gd32F303_Cmake/Firmware/GD32F30x_standard_peripheral/Include -mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=hard -Wall -fdata-sections -ffunction-sections -O0 -g -g -o CMakeFiles\\gd32F303_Cmake.elf.dir\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_bkp.c.obj -c D:\\GD32\\code\\gd32F303_Cmake\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_bkp.c",
+  "file": "D:\\GD32\\code\\gd32F303_Cmake\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_bkp.c",
+  "output": "CMakeFiles\\gd32F303_Cmake.elf.dir\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_bkp.c.obj"
+},
+{
+  "directory": "D:/GD32/code/gd32F303_Cmake/build",
+  "command": "D:\\APP\\STM32CubeCLT_1.18.0\\GNU-tools-for-STM32\\bin\\arm-none-eabi-gcc.exe -DGD32F30X_HD -DGD_ECLIPSE_GCC -DUSE_STDPERIPH_DRIVER -ID:/GD32/code/gd32F303_Cmake/inc -ID:/GD32/code/gd32F303_Cmake/Firmware/CMSIS -ID:/GD32/code/gd32F303_Cmake/Firmware/CMSIS/GD/GD32F30x/Include -ID:/GD32/code/gd32F303_Cmake/Firmware/GD32F30x_standard_peripheral/Include -mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=hard -Wall -fdata-sections -ffunction-sections -O0 -g -g -o CMakeFiles\\gd32F303_Cmake.elf.dir\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_can.c.obj -c D:\\GD32\\code\\gd32F303_Cmake\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_can.c",
+  "file": "D:\\GD32\\code\\gd32F303_Cmake\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_can.c",
+  "output": "CMakeFiles\\gd32F303_Cmake.elf.dir\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_can.c.obj"
+},
+{
+  "directory": "D:/GD32/code/gd32F303_Cmake/build",
+  "command": "D:\\APP\\STM32CubeCLT_1.18.0\\GNU-tools-for-STM32\\bin\\arm-none-eabi-gcc.exe -DGD32F30X_HD -DGD_ECLIPSE_GCC -DUSE_STDPERIPH_DRIVER -ID:/GD32/code/gd32F303_Cmake/inc -ID:/GD32/code/gd32F303_Cmake/Firmware/CMSIS -ID:/GD32/code/gd32F303_Cmake/Firmware/CMSIS/GD/GD32F30x/Include -ID:/GD32/code/gd32F303_Cmake/Firmware/GD32F30x_standard_peripheral/Include -mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=hard -Wall -fdata-sections -ffunction-sections -O0 -g -g -o CMakeFiles\\gd32F303_Cmake.elf.dir\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_crc.c.obj -c D:\\GD32\\code\\gd32F303_Cmake\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_crc.c",
+  "file": "D:\\GD32\\code\\gd32F303_Cmake\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_crc.c",
+  "output": "CMakeFiles\\gd32F303_Cmake.elf.dir\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_crc.c.obj"
+},
+{
+  "directory": "D:/GD32/code/gd32F303_Cmake/build",
+  "command": "D:\\APP\\STM32CubeCLT_1.18.0\\GNU-tools-for-STM32\\bin\\arm-none-eabi-gcc.exe -DGD32F30X_HD -DGD_ECLIPSE_GCC -DUSE_STDPERIPH_DRIVER -ID:/GD32/code/gd32F303_Cmake/inc -ID:/GD32/code/gd32F303_Cmake/Firmware/CMSIS -ID:/GD32/code/gd32F303_Cmake/Firmware/CMSIS/GD/GD32F30x/Include -ID:/GD32/code/gd32F303_Cmake/Firmware/GD32F30x_standard_peripheral/Include -mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=hard -Wall -fdata-sections -ffunction-sections -O0 -g -g -o CMakeFiles\\gd32F303_Cmake.elf.dir\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_ctc.c.obj -c D:\\GD32\\code\\gd32F303_Cmake\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_ctc.c",
+  "file": "D:\\GD32\\code\\gd32F303_Cmake\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_ctc.c",
+  "output": "CMakeFiles\\gd32F303_Cmake.elf.dir\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_ctc.c.obj"
+},
+{
+  "directory": "D:/GD32/code/gd32F303_Cmake/build",
+  "command": "D:\\APP\\STM32CubeCLT_1.18.0\\GNU-tools-for-STM32\\bin\\arm-none-eabi-gcc.exe -DGD32F30X_HD -DGD_ECLIPSE_GCC -DUSE_STDPERIPH_DRIVER -ID:/GD32/code/gd32F303_Cmake/inc -ID:/GD32/code/gd32F303_Cmake/Firmware/CMSIS -ID:/GD32/code/gd32F303_Cmake/Firmware/CMSIS/GD/GD32F30x/Include -ID:/GD32/code/gd32F303_Cmake/Firmware/GD32F30x_standard_peripheral/Include -mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=hard -Wall -fdata-sections -ffunction-sections -O0 -g -g -o CMakeFiles\\gd32F303_Cmake.elf.dir\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_dac.c.obj -c D:\\GD32\\code\\gd32F303_Cmake\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_dac.c",
+  "file": "D:\\GD32\\code\\gd32F303_Cmake\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_dac.c",
+  "output": "CMakeFiles\\gd32F303_Cmake.elf.dir\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_dac.c.obj"
+},
+{
+  "directory": "D:/GD32/code/gd32F303_Cmake/build",
+  "command": "D:\\APP\\STM32CubeCLT_1.18.0\\GNU-tools-for-STM32\\bin\\arm-none-eabi-gcc.exe -DGD32F30X_HD -DGD_ECLIPSE_GCC -DUSE_STDPERIPH_DRIVER -ID:/GD32/code/gd32F303_Cmake/inc -ID:/GD32/code/gd32F303_Cmake/Firmware/CMSIS -ID:/GD32/code/gd32F303_Cmake/Firmware/CMSIS/GD/GD32F30x/Include -ID:/GD32/code/gd32F303_Cmake/Firmware/GD32F30x_standard_peripheral/Include -mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=hard -Wall -fdata-sections -ffunction-sections -O0 -g -g -o CMakeFiles\\gd32F303_Cmake.elf.dir\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_dbg.c.obj -c D:\\GD32\\code\\gd32F303_Cmake\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_dbg.c",
+  "file": "D:\\GD32\\code\\gd32F303_Cmake\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_dbg.c",
+  "output": "CMakeFiles\\gd32F303_Cmake.elf.dir\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_dbg.c.obj"
+},
+{
+  "directory": "D:/GD32/code/gd32F303_Cmake/build",
+  "command": "D:\\APP\\STM32CubeCLT_1.18.0\\GNU-tools-for-STM32\\bin\\arm-none-eabi-gcc.exe -DGD32F30X_HD -DGD_ECLIPSE_GCC -DUSE_STDPERIPH_DRIVER -ID:/GD32/code/gd32F303_Cmake/inc -ID:/GD32/code/gd32F303_Cmake/Firmware/CMSIS -ID:/GD32/code/gd32F303_Cmake/Firmware/CMSIS/GD/GD32F30x/Include -ID:/GD32/code/gd32F303_Cmake/Firmware/GD32F30x_standard_peripheral/Include -mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=hard -Wall -fdata-sections -ffunction-sections -O0 -g -g -o CMakeFiles\\gd32F303_Cmake.elf.dir\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_dma.c.obj -c D:\\GD32\\code\\gd32F303_Cmake\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_dma.c",
+  "file": "D:\\GD32\\code\\gd32F303_Cmake\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_dma.c",
+  "output": "CMakeFiles\\gd32F303_Cmake.elf.dir\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_dma.c.obj"
+},
+{
+  "directory": "D:/GD32/code/gd32F303_Cmake/build",
+  "command": "D:\\APP\\STM32CubeCLT_1.18.0\\GNU-tools-for-STM32\\bin\\arm-none-eabi-gcc.exe -DGD32F30X_HD -DGD_ECLIPSE_GCC -DUSE_STDPERIPH_DRIVER -ID:/GD32/code/gd32F303_Cmake/inc -ID:/GD32/code/gd32F303_Cmake/Firmware/CMSIS -ID:/GD32/code/gd32F303_Cmake/Firmware/CMSIS/GD/GD32F30x/Include -ID:/GD32/code/gd32F303_Cmake/Firmware/GD32F30x_standard_peripheral/Include -mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=hard -Wall -fdata-sections -ffunction-sections -O0 -g -g -o CMakeFiles\\gd32F303_Cmake.elf.dir\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_enet.c.obj -c D:\\GD32\\code\\gd32F303_Cmake\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_enet.c",
+  "file": "D:\\GD32\\code\\gd32F303_Cmake\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_enet.c",
+  "output": "CMakeFiles\\gd32F303_Cmake.elf.dir\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_enet.c.obj"
+},
+{
+  "directory": "D:/GD32/code/gd32F303_Cmake/build",
+  "command": "D:\\APP\\STM32CubeCLT_1.18.0\\GNU-tools-for-STM32\\bin\\arm-none-eabi-gcc.exe -DGD32F30X_HD -DGD_ECLIPSE_GCC -DUSE_STDPERIPH_DRIVER -ID:/GD32/code/gd32F303_Cmake/inc -ID:/GD32/code/gd32F303_Cmake/Firmware/CMSIS -ID:/GD32/code/gd32F303_Cmake/Firmware/CMSIS/GD/GD32F30x/Include -ID:/GD32/code/gd32F303_Cmake/Firmware/GD32F30x_standard_peripheral/Include -mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=hard -Wall -fdata-sections -ffunction-sections -O0 -g -g -o CMakeFiles\\gd32F303_Cmake.elf.dir\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_exmc.c.obj -c D:\\GD32\\code\\gd32F303_Cmake\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_exmc.c",
+  "file": "D:\\GD32\\code\\gd32F303_Cmake\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_exmc.c",
+  "output": "CMakeFiles\\gd32F303_Cmake.elf.dir\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_exmc.c.obj"
+},
+{
+  "directory": "D:/GD32/code/gd32F303_Cmake/build",
+  "command": "D:\\APP\\STM32CubeCLT_1.18.0\\GNU-tools-for-STM32\\bin\\arm-none-eabi-gcc.exe -DGD32F30X_HD -DGD_ECLIPSE_GCC -DUSE_STDPERIPH_DRIVER -ID:/GD32/code/gd32F303_Cmake/inc -ID:/GD32/code/gd32F303_Cmake/Firmware/CMSIS -ID:/GD32/code/gd32F303_Cmake/Firmware/CMSIS/GD/GD32F30x/Include -ID:/GD32/code/gd32F303_Cmake/Firmware/GD32F30x_standard_peripheral/Include -mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=hard -Wall -fdata-sections -ffunction-sections -O0 -g -g -o CMakeFiles\\gd32F303_Cmake.elf.dir\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_exti.c.obj -c D:\\GD32\\code\\gd32F303_Cmake\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_exti.c",
+  "file": "D:\\GD32\\code\\gd32F303_Cmake\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_exti.c",
+  "output": "CMakeFiles\\gd32F303_Cmake.elf.dir\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_exti.c.obj"
+},
+{
+  "directory": "D:/GD32/code/gd32F303_Cmake/build",
+  "command": "D:\\APP\\STM32CubeCLT_1.18.0\\GNU-tools-for-STM32\\bin\\arm-none-eabi-gcc.exe -DGD32F30X_HD -DGD_ECLIPSE_GCC -DUSE_STDPERIPH_DRIVER -ID:/GD32/code/gd32F303_Cmake/inc -ID:/GD32/code/gd32F303_Cmake/Firmware/CMSIS -ID:/GD32/code/gd32F303_Cmake/Firmware/CMSIS/GD/GD32F30x/Include -ID:/GD32/code/gd32F303_Cmake/Firmware/GD32F30x_standard_peripheral/Include -mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=hard -Wall -fdata-sections -ffunction-sections -O0 -g -g -o CMakeFiles\\gd32F303_Cmake.elf.dir\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_fmc.c.obj -c D:\\GD32\\code\\gd32F303_Cmake\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_fmc.c",
+  "file": "D:\\GD32\\code\\gd32F303_Cmake\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_fmc.c",
+  "output": "CMakeFiles\\gd32F303_Cmake.elf.dir\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_fmc.c.obj"
+},
+{
+  "directory": "D:/GD32/code/gd32F303_Cmake/build",
+  "command": "D:\\APP\\STM32CubeCLT_1.18.0\\GNU-tools-for-STM32\\bin\\arm-none-eabi-gcc.exe -DGD32F30X_HD -DGD_ECLIPSE_GCC -DUSE_STDPERIPH_DRIVER -ID:/GD32/code/gd32F303_Cmake/inc -ID:/GD32/code/gd32F303_Cmake/Firmware/CMSIS -ID:/GD32/code/gd32F303_Cmake/Firmware/CMSIS/GD/GD32F30x/Include -ID:/GD32/code/gd32F303_Cmake/Firmware/GD32F30x_standard_peripheral/Include -mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=hard -Wall -fdata-sections -ffunction-sections -O0 -g -g -o CMakeFiles\\gd32F303_Cmake.elf.dir\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_fwdgt.c.obj -c D:\\GD32\\code\\gd32F303_Cmake\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_fwdgt.c",
+  "file": "D:\\GD32\\code\\gd32F303_Cmake\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_fwdgt.c",
+  "output": "CMakeFiles\\gd32F303_Cmake.elf.dir\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_fwdgt.c.obj"
+},
+{
+  "directory": "D:/GD32/code/gd32F303_Cmake/build",
+  "command": "D:\\APP\\STM32CubeCLT_1.18.0\\GNU-tools-for-STM32\\bin\\arm-none-eabi-gcc.exe -DGD32F30X_HD -DGD_ECLIPSE_GCC -DUSE_STDPERIPH_DRIVER -ID:/GD32/code/gd32F303_Cmake/inc -ID:/GD32/code/gd32F303_Cmake/Firmware/CMSIS -ID:/GD32/code/gd32F303_Cmake/Firmware/CMSIS/GD/GD32F30x/Include -ID:/GD32/code/gd32F303_Cmake/Firmware/GD32F30x_standard_peripheral/Include -mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=hard -Wall -fdata-sections -ffunction-sections -O0 -g -g -o CMakeFiles\\gd32F303_Cmake.elf.dir\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_gpio.c.obj -c D:\\GD32\\code\\gd32F303_Cmake\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_gpio.c",
+  "file": "D:\\GD32\\code\\gd32F303_Cmake\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_gpio.c",
+  "output": "CMakeFiles\\gd32F303_Cmake.elf.dir\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_gpio.c.obj"
+},
+{
+  "directory": "D:/GD32/code/gd32F303_Cmake/build",
+  "command": "D:\\APP\\STM32CubeCLT_1.18.0\\GNU-tools-for-STM32\\bin\\arm-none-eabi-gcc.exe -DGD32F30X_HD -DGD_ECLIPSE_GCC -DUSE_STDPERIPH_DRIVER -ID:/GD32/code/gd32F303_Cmake/inc -ID:/GD32/code/gd32F303_Cmake/Firmware/CMSIS -ID:/GD32/code/gd32F303_Cmake/Firmware/CMSIS/GD/GD32F30x/Include -ID:/GD32/code/gd32F303_Cmake/Firmware/GD32F30x_standard_peripheral/Include -mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=hard -Wall -fdata-sections -ffunction-sections -O0 -g -g -o CMakeFiles\\gd32F303_Cmake.elf.dir\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_i2c.c.obj -c D:\\GD32\\code\\gd32F303_Cmake\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_i2c.c",
+  "file": "D:\\GD32\\code\\gd32F303_Cmake\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_i2c.c",
+  "output": "CMakeFiles\\gd32F303_Cmake.elf.dir\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_i2c.c.obj"
+},
+{
+  "directory": "D:/GD32/code/gd32F303_Cmake/build",
+  "command": "D:\\APP\\STM32CubeCLT_1.18.0\\GNU-tools-for-STM32\\bin\\arm-none-eabi-gcc.exe -DGD32F30X_HD -DGD_ECLIPSE_GCC -DUSE_STDPERIPH_DRIVER -ID:/GD32/code/gd32F303_Cmake/inc -ID:/GD32/code/gd32F303_Cmake/Firmware/CMSIS -ID:/GD32/code/gd32F303_Cmake/Firmware/CMSIS/GD/GD32F30x/Include -ID:/GD32/code/gd32F303_Cmake/Firmware/GD32F30x_standard_peripheral/Include -mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=hard -Wall -fdata-sections -ffunction-sections -O0 -g -g -o CMakeFiles\\gd32F303_Cmake.elf.dir\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_misc.c.obj -c D:\\GD32\\code\\gd32F303_Cmake\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_misc.c",
+  "file": "D:\\GD32\\code\\gd32F303_Cmake\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_misc.c",
+  "output": "CMakeFiles\\gd32F303_Cmake.elf.dir\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_misc.c.obj"
+},
+{
+  "directory": "D:/GD32/code/gd32F303_Cmake/build",
+  "command": "D:\\APP\\STM32CubeCLT_1.18.0\\GNU-tools-for-STM32\\bin\\arm-none-eabi-gcc.exe -DGD32F30X_HD -DGD_ECLIPSE_GCC -DUSE_STDPERIPH_DRIVER -ID:/GD32/code/gd32F303_Cmake/inc -ID:/GD32/code/gd32F303_Cmake/Firmware/CMSIS -ID:/GD32/code/gd32F303_Cmake/Firmware/CMSIS/GD/GD32F30x/Include -ID:/GD32/code/gd32F303_Cmake/Firmware/GD32F30x_standard_peripheral/Include -mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=hard -Wall -fdata-sections -ffunction-sections -O0 -g -g -o CMakeFiles\\gd32F303_Cmake.elf.dir\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_pmu.c.obj -c D:\\GD32\\code\\gd32F303_Cmake\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_pmu.c",
+  "file": "D:\\GD32\\code\\gd32F303_Cmake\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_pmu.c",
+  "output": "CMakeFiles\\gd32F303_Cmake.elf.dir\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_pmu.c.obj"
+},
+{
+  "directory": "D:/GD32/code/gd32F303_Cmake/build",
+  "command": "D:\\APP\\STM32CubeCLT_1.18.0\\GNU-tools-for-STM32\\bin\\arm-none-eabi-gcc.exe -DGD32F30X_HD -DGD_ECLIPSE_GCC -DUSE_STDPERIPH_DRIVER -ID:/GD32/code/gd32F303_Cmake/inc -ID:/GD32/code/gd32F303_Cmake/Firmware/CMSIS -ID:/GD32/code/gd32F303_Cmake/Firmware/CMSIS/GD/GD32F30x/Include -ID:/GD32/code/gd32F303_Cmake/Firmware/GD32F30x_standard_peripheral/Include -mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=hard -Wall -fdata-sections -ffunction-sections -O0 -g -g -o CMakeFiles\\gd32F303_Cmake.elf.dir\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_rcu.c.obj -c D:\\GD32\\code\\gd32F303_Cmake\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_rcu.c",
+  "file": "D:\\GD32\\code\\gd32F303_Cmake\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_rcu.c",
+  "output": "CMakeFiles\\gd32F303_Cmake.elf.dir\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_rcu.c.obj"
+},
+{
+  "directory": "D:/GD32/code/gd32F303_Cmake/build",
+  "command": "D:\\APP\\STM32CubeCLT_1.18.0\\GNU-tools-for-STM32\\bin\\arm-none-eabi-gcc.exe -DGD32F30X_HD -DGD_ECLIPSE_GCC -DUSE_STDPERIPH_DRIVER -ID:/GD32/code/gd32F303_Cmake/inc -ID:/GD32/code/gd32F303_Cmake/Firmware/CMSIS -ID:/GD32/code/gd32F303_Cmake/Firmware/CMSIS/GD/GD32F30x/Include -ID:/GD32/code/gd32F303_Cmake/Firmware/GD32F30x_standard_peripheral/Include -mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=hard -Wall -fdata-sections -ffunction-sections -O0 -g -g -o CMakeFiles\\gd32F303_Cmake.elf.dir\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_rtc.c.obj -c D:\\GD32\\code\\gd32F303_Cmake\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_rtc.c",
+  "file": "D:\\GD32\\code\\gd32F303_Cmake\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_rtc.c",
+  "output": "CMakeFiles\\gd32F303_Cmake.elf.dir\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_rtc.c.obj"
+},
+{
+  "directory": "D:/GD32/code/gd32F303_Cmake/build",
+  "command": "D:\\APP\\STM32CubeCLT_1.18.0\\GNU-tools-for-STM32\\bin\\arm-none-eabi-gcc.exe -DGD32F30X_HD -DGD_ECLIPSE_GCC -DUSE_STDPERIPH_DRIVER -ID:/GD32/code/gd32F303_Cmake/inc -ID:/GD32/code/gd32F303_Cmake/Firmware/CMSIS -ID:/GD32/code/gd32F303_Cmake/Firmware/CMSIS/GD/GD32F30x/Include -ID:/GD32/code/gd32F303_Cmake/Firmware/GD32F30x_standard_peripheral/Include -mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=hard -Wall -fdata-sections -ffunction-sections -O0 -g -g -o CMakeFiles\\gd32F303_Cmake.elf.dir\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_sdio.c.obj -c D:\\GD32\\code\\gd32F303_Cmake\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_sdio.c",
+  "file": "D:\\GD32\\code\\gd32F303_Cmake\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_sdio.c",
+  "output": "CMakeFiles\\gd32F303_Cmake.elf.dir\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_sdio.c.obj"
+},
+{
+  "directory": "D:/GD32/code/gd32F303_Cmake/build",
+  "command": "D:\\APP\\STM32CubeCLT_1.18.0\\GNU-tools-for-STM32\\bin\\arm-none-eabi-gcc.exe -DGD32F30X_HD -DGD_ECLIPSE_GCC -DUSE_STDPERIPH_DRIVER -ID:/GD32/code/gd32F303_Cmake/inc -ID:/GD32/code/gd32F303_Cmake/Firmware/CMSIS -ID:/GD32/code/gd32F303_Cmake/Firmware/CMSIS/GD/GD32F30x/Include -ID:/GD32/code/gd32F303_Cmake/Firmware/GD32F30x_standard_peripheral/Include -mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=hard -Wall -fdata-sections -ffunction-sections -O0 -g -g -o CMakeFiles\\gd32F303_Cmake.elf.dir\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_spi.c.obj -c D:\\GD32\\code\\gd32F303_Cmake\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_spi.c",
+  "file": "D:\\GD32\\code\\gd32F303_Cmake\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_spi.c",
+  "output": "CMakeFiles\\gd32F303_Cmake.elf.dir\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_spi.c.obj"
+},
+{
+  "directory": "D:/GD32/code/gd32F303_Cmake/build",
+  "command": "D:\\APP\\STM32CubeCLT_1.18.0\\GNU-tools-for-STM32\\bin\\arm-none-eabi-gcc.exe -DGD32F30X_HD -DGD_ECLIPSE_GCC -DUSE_STDPERIPH_DRIVER -ID:/GD32/code/gd32F303_Cmake/inc -ID:/GD32/code/gd32F303_Cmake/Firmware/CMSIS -ID:/GD32/code/gd32F303_Cmake/Firmware/CMSIS/GD/GD32F30x/Include -ID:/GD32/code/gd32F303_Cmake/Firmware/GD32F30x_standard_peripheral/Include -mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=hard -Wall -fdata-sections -ffunction-sections -O0 -g -g -o CMakeFiles\\gd32F303_Cmake.elf.dir\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_timer.c.obj -c D:\\GD32\\code\\gd32F303_Cmake\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_timer.c",
+  "file": "D:\\GD32\\code\\gd32F303_Cmake\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_timer.c",
+  "output": "CMakeFiles\\gd32F303_Cmake.elf.dir\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_timer.c.obj"
+},
+{
+  "directory": "D:/GD32/code/gd32F303_Cmake/build",
+  "command": "D:\\APP\\STM32CubeCLT_1.18.0\\GNU-tools-for-STM32\\bin\\arm-none-eabi-gcc.exe -DGD32F30X_HD -DGD_ECLIPSE_GCC -DUSE_STDPERIPH_DRIVER -ID:/GD32/code/gd32F303_Cmake/inc -ID:/GD32/code/gd32F303_Cmake/Firmware/CMSIS -ID:/GD32/code/gd32F303_Cmake/Firmware/CMSIS/GD/GD32F30x/Include -ID:/GD32/code/gd32F303_Cmake/Firmware/GD32F30x_standard_peripheral/Include -mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=hard -Wall -fdata-sections -ffunction-sections -O0 -g -g -o CMakeFiles\\gd32F303_Cmake.elf.dir\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_usart.c.obj -c D:\\GD32\\code\\gd32F303_Cmake\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_usart.c",
+  "file": "D:\\GD32\\code\\gd32F303_Cmake\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_usart.c",
+  "output": "CMakeFiles\\gd32F303_Cmake.elf.dir\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_usart.c.obj"
+},
+{
+  "directory": "D:/GD32/code/gd32F303_Cmake/build",
+  "command": "D:\\APP\\STM32CubeCLT_1.18.0\\GNU-tools-for-STM32\\bin\\arm-none-eabi-gcc.exe -DGD32F30X_HD -DGD_ECLIPSE_GCC -DUSE_STDPERIPH_DRIVER -ID:/GD32/code/gd32F303_Cmake/inc -ID:/GD32/code/gd32F303_Cmake/Firmware/CMSIS -ID:/GD32/code/gd32F303_Cmake/Firmware/CMSIS/GD/GD32F30x/Include -ID:/GD32/code/gd32F303_Cmake/Firmware/GD32F30x_standard_peripheral/Include -mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=hard -Wall -fdata-sections -ffunction-sections -O0 -g -g -o CMakeFiles\\gd32F303_Cmake.elf.dir\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_wwdgt.c.obj -c D:\\GD32\\code\\gd32F303_Cmake\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_wwdgt.c",
+  "file": "D:\\GD32\\code\\gd32F303_Cmake\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_wwdgt.c",
+  "output": "CMakeFiles\\gd32F303_Cmake.elf.dir\\Firmware\\GD32F30x_standard_peripheral\\Source\\gd32f30x_wwdgt.c.obj"
+},
+{
+  "directory": "D:/GD32/code/gd32F303_Cmake/build",
+  "command": "D:\\APP\\STM32CubeCLT_1.18.0\\GNU-tools-for-STM32\\bin\\arm-none-eabi-gcc.exe -DGD32F30X_HD -DGD_ECLIPSE_GCC -DUSE_STDPERIPH_DRIVER -ID:/GD32/code/gd32F303_Cmake/inc -ID:/GD32/code/gd32F303_Cmake/Firmware/CMSIS -ID:/GD32/code/gd32F303_Cmake/Firmware/CMSIS/GD/GD32F30x/Include -ID:/GD32/code/gd32F303_Cmake/Firmware/GD32F30x_standard_peripheral/Include -mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=hard -Wall -fdata-sections -ffunction-sections -O0 -g -g -o CMakeFiles\\gd32F303_Cmake.elf.dir\\Firmware\\CMSIS\\GD\\GD32F30x\\Source\\syscalls.c.obj -c D:\\GD32\\code\\gd32F303_Cmake\\Firmware\\CMSIS\\GD\\GD32F30x\\Source\\syscalls.c",
+  "file": "D:\\GD32\\code\\gd32F303_Cmake\\Firmware\\CMSIS\\GD\\GD32F30x\\Source\\syscalls.c",
+  "output": "CMakeFiles\\gd32F303_Cmake.elf.dir\\Firmware\\CMSIS\\GD\\GD32F30x\\Source\\syscalls.c.obj"
+},
+{
+  "directory": "D:/GD32/code/gd32F303_Cmake/build",
+  "command": "D:\\APP\\STM32CubeCLT_1.18.0\\GNU-tools-for-STM32\\bin\\arm-none-eabi-gcc.exe -DGD32F30X_HD -DGD_ECLIPSE_GCC -DUSE_STDPERIPH_DRIVER -ID:/GD32/code/gd32F303_Cmake/inc -ID:/GD32/code/gd32F303_Cmake/Firmware/CMSIS -ID:/GD32/code/gd32F303_Cmake/Firmware/CMSIS/GD/GD32F30x/Include -ID:/GD32/code/gd32F303_Cmake/Firmware/GD32F30x_standard_peripheral/Include -mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=hard -Wall -fdata-sections -ffunction-sections -O0 -g -g -o CMakeFiles\\gd32F303_Cmake.elf.dir\\Firmware\\CMSIS\\GD\\GD32F30x\\Source\\system_gd32f30x.c.obj -c D:\\GD32\\code\\gd32F303_Cmake\\Firmware\\CMSIS\\GD\\GD32F30x\\Source\\system_gd32f30x.c",
+  "file": "D:\\GD32\\code\\gd32F303_Cmake\\Firmware\\CMSIS\\GD\\GD32F30x\\Source\\system_gd32f30x.c",
+  "output": "CMakeFiles\\gd32F303_Cmake.elf.dir\\Firmware\\CMSIS\\GD\\GD32F30x\\Source\\system_gd32f30x.c.obj"
+},
+{
+  "directory": "D:/GD32/code/gd32F303_Cmake/build",
+  "command": "D:\\APP\\STM32CubeCLT_1.18.0\\GNU-tools-for-STM32\\bin\\arm-none-eabi-gcc.exe -DGD32F30X_HD -DGD_ECLIPSE_GCC -DUSE_STDPERIPH_DRIVER -ID:/GD32/code/gd32F303_Cmake/inc -ID:/GD32/code/gd32F303_Cmake/Firmware/CMSIS -ID:/GD32/code/gd32F303_Cmake/Firmware/CMSIS/GD/GD32F30x/Include -ID:/GD32/code/gd32F303_Cmake/Firmware/GD32F30x_standard_peripheral/Include -mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=hard -x assembler-with-cpp -g -o CMakeFiles\\gd32F303_Cmake.elf.dir\\gcc_startup\\startup_gd32f30x_hd.S.obj -c D:\\GD32\\code\\gd32F303_Cmake\\gcc_startup\\startup_gd32f30x_hd.S",
+  "file": "D:\\GD32\\code\\gd32F303_Cmake\\gcc_startup\\startup_gd32f30x_hd.S",
+  "output": "CMakeFiles\\gd32F303_Cmake.elf.dir\\gcc_startup\\startup_gd32f30x_hd.S.obj"
+}
+]
