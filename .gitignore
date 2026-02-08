@@ -1,0 +1,29 @@
+# Compilation outputs
+build/
+bin/
+obj/
+
+# CMake generated files
+CMakeCache.txt
+CMakeFiles/
+CMakeScripts/
+cmake_install.cmake
+install_manifest.txt
+Makefile
+*.cmake
+!arm-none-eabi.cmake
+
+# Executables
+*.elf
+*.bin
+*.hex
+*.map
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.save
+
+# Logs
+*.log

@@ -1,3 +1,0 @@
-D:/GD32/code/gd32F303_Cmake/build/CMakeFiles/gd32F303_Cmake.elf.dir
-D:/GD32/code/gd32F303_Cmake/build/CMakeFiles/edit_cache.dir
-D:/GD32/code/gd32F303_Cmake/build/CMakeFiles/rebuild_cache.dir
