@@ -34,6 +34,7 @@ add_definitions(-DGD_ECLIPSE_GCC)
 # Include Directories
 include_directories(
     inc
+    tools/RTT
     Firmware/CMSIS
     Firmware/CMSIS/GD/GD32F30x/Include
     Firmware/GD32F30x_standard_peripheral/Include
@@ -41,12 +42,14 @@ include_directories(
 
 # Source Files
 file(GLOB USER_SOURCES "src/*.c")
+file(GLOB RTT_SOURCES "tools/RTT/*.c" "tools/RTT/*.S")
 file(GLOB PERIPH_SOURCES "Firmware/GD32F30x_standard_peripheral/Source/*.c")
 file(GLOB CMSIS_SOURCES "Firmware/CMSIS/GD/GD32F30x/Source/*.c")
 set(STARTUP_SOURCE "gcc_startup/startup_gd32f30x_hd.S")
 
 set(ALL_SOURCES
     ${USER_SOURCES}
+    ${RTT_SOURCES}
     ${PERIPH_SOURCES}
     ${CMSIS_SOURCES}
     ${STARTUP_SOURCE}

@@ -49,9 +49,32 @@ Zerobss:
   bl  SystemInit
 /* Call static constructors */
   bl __libc_init_array
+/* Call auto_init */
+  bl auto_init
 /*Call the main function */
   bl main
   bx lr
+
+/**
+ * @brief Auto initialization function implemented in Assembly.
+ *        Iterates through the .init_fn section and calls each function.
+ */
+.thumb_func
+auto_init:
+  push {r4, r5, lr}
+  ldr r4, =__init_fn_start
+  ldr r5, =__init_fn_end
+1:
+  cmp r4, r5
+  bge 2f
+  ldr r3, [r4], #4
+  cmp r3, #0          @ Check if NULL
+  beq 1b              @ Skip if NULL
+  blx r3              @ Call the init function
+  b 1b
+2:
+  pop {r4, r5, pc}
+
 .size Reset_Handler, .-Reset_Handler
 
     .section .text.Default_Handler,"ax",%progbits

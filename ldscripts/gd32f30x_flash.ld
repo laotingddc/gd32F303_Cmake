@@ -90,6 +90,16 @@ SECTIONS
     PROVIDE_HIDDEN (__fini_array_end = .);
   } >FLASH
 
+  /* custom auto-initialization section */
+  .init_fn :
+  {
+    . = ALIGN(4);
+    __init_fn_start = .;
+    KEEP (*(SORT(.init_fn.*)))
+    __init_fn_end = .;
+    . = ALIGN(4);
+  } >FLASH
+
   /* provide some necessary symbols for initialized data */
   _sidata = LOADADDR(.data);
   .data :
