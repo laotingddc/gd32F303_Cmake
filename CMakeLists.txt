@@ -1,67 +1,59 @@
 cmake_minimum_required(VERSION 3.10)
 
-# Toolchain settings - MUST be before project()
+# 1. 工具链设置
 if(NOT CMAKE_TOOLCHAIN_FILE)
     set(CMAKE_TOOLCHAIN_FILE "${CMAKE_CURRENT_SOURCE_DIR}/arm-none-eabi.cmake")
 endif()
 include(${CMAKE_TOOLCHAIN_FILE})
 
-# Project Name
-project(gd32F303_Cmake C ASM)
+# 2. 项目定义
+project(Platform_Base_Project C ASM)
 
-# CPU Settings
-set(CPU_FLAGS "-mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=hard")
-
-# Compiler Flags
-set(CMAKE_C_FLAGS "${CPU_FLAGS} -Wall -fdata-sections -ffunction-sections")
-set(CMAKE_ASM_FLAGS "${CPU_FLAGS} -x assembler-with-cpp")
-
-if(CMAKE_BUILD_TYPE STREQUAL "Debug")
-    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -O0 -g")
-else()
-    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Os")
+# 3. MCU 平台选择
+if(NOT MCU_SERIES)
+    set(MCU_SERIES "gd32f30x" CACHE STRING "Target MCU Series")
 endif()
 
-# Linker Flags
-set(LINKER_SCRIPT ${CMAKE_CURRENT_SOURCE_DIR}/ldscripts/gd32f30x_flash.ld)
-set(CMAKE_EXE_LINKER_FLAGS "${CPU_FLAGS} -T${LINKER_SCRIPT} -Wl,--gc-sections --specs=nosys.specs --specs=nano.specs -Wl,-Map=${PROJECT_NAME}.map")
+# 4. 加载芯片特定配置
+include(cmake/mcu_${MCU_SERIES}.cmake)
 
-# Definitions
-add_definitions(-DGD32F30X_HD)
-add_definitions(-DUSE_STDPERIPH_DRIVER)
-add_definitions(-DGD_ECLIPSE_GCC)
+# 5. 全局编译选项
+set(CMAKE_C_FLAGS "${CPU_FLAGS} -Wall -fdata-sections -ffunction-sections" CACHE INTERNAL "")
+set(CMAKE_ASM_FLAGS "${CPU_FLAGS} -x assembler-with-cpp" CACHE INTERNAL "")
+set(CMAKE_EXE_LINKER_FLAGS "${CPU_FLAGS} -T${MCU_LINKER_SCRIPT} -Wl,--gc-sections --specs=nosys.specs --specs=nano.specs -Wl,-Map=${PROJECT_NAME}.map" CACHE INTERNAL "")
 
-# Include Directories
+# 6. 包含目录
 include_directories(
-    inc
-    tools/RTT
-    Firmware/CMSIS
-    Firmware/CMSIS/GD/GD32F30x/Include
-    Firmware/GD32F30x_standard_peripheral/Include
+    platform/mhal/inc
+    platform/common/log      # 包含 rtt_log.h 和 SEGGER_RTT.h
+    platform/common/utils
+    projects/demo_product/bsp/board_config
+    ${MCU_SPECIFIC_INCLUDES}
 )
 
-# Source Files
-file(GLOB USER_SOURCES "src/*.c")
-file(GLOB RTT_SOURCES "tools/RTT/*.c" "tools/RTT/*.S")
-file(GLOB PERIPH_SOURCES "Firmware/GD32F30x_standard_peripheral/Source/*.c")
-file(GLOB CMSIS_SOURCES "Firmware/CMSIS/GD/GD32F30x/Source/*.c")
-set(STARTUP_SOURCE "gcc_startup/startup_gd32f30x_hd.S")
+# 7. 汇总源码
+file(GLOB_RECURSE COMMON_SOURCES "platform/common/**/*.c")
+file(GLOB_RECURSE DRIVER_SOURCES "platform/drivers/**/*.c")
 
-set(ALL_SOURCES
-    ${USER_SOURCES}
-    ${RTT_SOURCES}
-    ${PERIPH_SOURCES}
-    ${CMSIS_SOURCES}
-    ${STARTUP_SOURCE}
+# 产品特定源码
+set(PRODUCT_SOURCES 
+    projects/demo_product/main.c
+    projects/demo_product/bsp/board_config/gd32f307c_eval.c
+    projects/demo_product/bsp/board_config/board_init.c
 )
 
-# Executable
-add_executable(${PROJECT_NAME}.elf ${ALL_SOURCES})
+# 8. 生成可执行文件
+add_executable(${PROJECT_NAME}.elf 
+    ${PRODUCT_SOURCES}
+    ${COMMON_SOURCES}
+    ${DRIVER_SOURCES}
+    ${MCU_SPECIFIC_SOURCES}
+    ${MCU_STARTUP_FILE}
+)
 
-# Post-build commands
+# 9. 后处理
 add_custom_command(TARGET ${PROJECT_NAME}.elf POST_BUILD
     COMMAND ${CMAKE_OBJCOPY} -O binary ${PROJECT_NAME}.elf ${PROJECT_NAME}.bin
     COMMAND ${CMAKE_OBJCOPY} -O ihex ${PROJECT_NAME}.elf ${PROJECT_NAME}.hex
     COMMAND ${CMAKE_SIZE} ${PROJECT_NAME}.elf
-    COMMENT "Generating .bin and .hex files, and showing size"
 )
