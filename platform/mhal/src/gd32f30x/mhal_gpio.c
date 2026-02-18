@@ -2,6 +2,10 @@
 #include "gd32f30x.h"
 #include <stdint.h>
 
+// 声明由外部生成的配置
+extern const mhal_gpio_cfg_t g_board_gpio_cfg[];
+extern const size_t g_board_gpio_cnt;
+
 // 内部映射辅助：端口索引转 GD32 端口地址
 static uint32_t _get_port_base(uint8_t port_idx) {
     switch (port_idx) {
@@ -57,4 +61,31 @@ mhal_gpio_status_t mhal_gpio_read(uint8_t port_idx, uint16_t pin_mask) {
 void mhal_gpio_toggle(uint8_t port_idx, uint16_t pin_mask) {
     mhal_gpio_status_t status = mhal_gpio_read(port_idx, pin_mask);
     mhal_gpio_write(port_idx, pin_mask, (status == MHAL_GPIO_HIGH) ? MHAL_GPIO_LOW : MHAL_GPIO_HIGH);
+}
+
+void mhal_gpio_load_cfg(const mhal_gpio_cfg_t *cfg_array, size_t count) {
+    for (size_t i = 0; i < count; i++) {
+        mhal_gpio_init(cfg_array[i].port_idx, cfg_array[i].pin_mask, cfg_array[i].mode);
+        mhal_gpio_write(cfg_array[i].port_idx, cfg_array[i].pin_mask, cfg_array[i].init_level);
+    }
+}
+
+// 基于 ID 的操作实现
+void mhal_gpio_id_write(uint32_t id, mhal_gpio_status_t status) {
+    if (id < g_board_gpio_cnt) {
+        mhal_gpio_write(g_board_gpio_cfg[id].port_idx, g_board_gpio_cfg[id].pin_mask, status);
+    }
+}
+
+void mhal_gpio_id_toggle(uint32_t id) {
+    if (id < g_board_gpio_cnt) {
+        mhal_gpio_toggle(g_board_gpio_cfg[id].port_idx, g_board_gpio_cfg[id].pin_mask);
+    }
+}
+
+mhal_gpio_status_t mhal_gpio_id_read(uint32_t id) {
+    if (id < g_board_gpio_cnt) {
+        return mhal_gpio_read(g_board_gpio_cfg[id].port_idx, g_board_gpio_cfg[id].pin_mask);
+    }
+    return MHAL_GPIO_LOW;
 }

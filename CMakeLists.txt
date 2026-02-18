@@ -40,6 +40,7 @@ set(PRODUCT_SOURCES
     projects/demo_product/main.c
     projects/demo_product/bsp/board_config/gd32f307c_eval.c
     projects/demo_product/bsp/board_config/board_init.c
+    projects/demo_product/bsp/board_config/gpio_cfg.c
 )
 
 # 8. 生成可执行文件

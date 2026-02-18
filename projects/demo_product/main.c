@@ -2,19 +2,20 @@
 #include "board_init.h"
 #include "rtt_log.h"
 
-/**
- * @brief 应用层主循环
- */
 int main(void)
 {
-    LOG_I("Product Demo started.");
-    LOG_D("System initialized by auto-init mechanism.");
-
+    LOG_I("Running Multi-LED demo.");
+systick_config();
     while (1) {
-        // 使用 BSP 定义的宏，完全屏蔽引脚细节
-        BOARD_LED_TOGGLE();
+    BOARD_LED_TOGGLE();
         
-        mhal_delay_ms(500);
-        LOG_D("Tick");
+        
+        LED_DATA_TOGGLE();
+       // mhal_delay_ms(200);
+        
+        LED_STATUS_TOGGLE();
+        //mhal_delay_ms(200);
+        mhal_delay_ms(1100);
+        LOG_D("Blink loop");
     }
 }

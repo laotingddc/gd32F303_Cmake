@@ -1,16 +1,16 @@
 #include "mhal_gpio.h"
 #include "auto_init.h"
 #include "board_init.h"
+#include "gpio_cfg.h"
 
 /**
  * @brief 板级硬件初始化
- * 这里负责将具体的 MCU 引脚与产品逻辑功能（如 LED）绑定
+ * 现在通过加载 JSON 生成的配置数组来初始化所有 GPIO
  */
 static int board_hw_init(void) {
-    // 初始化 LED：GPIOA, Pin 8
-    mhal_gpio_init(LED_PORT, LED_PIN, MHAL_GPIO_MODE_OUT_PP);
+    // 自动加载所有在 JSON 中定义的 GPIO
+    mhal_gpio_load_cfg(g_board_gpio_cfg, g_board_gpio_cnt);
     
-    // 如果有其他传感器或外设，也在这里初始化
     return 0;
 }
 
