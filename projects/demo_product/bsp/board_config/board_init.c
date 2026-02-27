@@ -1,15 +1,13 @@
-#include "mhal_gpio.h"
 #include "auto_init.h"
 #include "board_init.h"
-#include "gpio_cfg.h"
+#include "systick.h"
 
 /**
  * @brief 板级硬件初始化
- * 现在通过加载 JSON 生成的配置数组来初始化所有 GPIO
+ * 板级基础硬件初始化（GPIO 由 mhal_gpio.c 中 INIT_BOARD_EXPORT_PRIO 自动初始化）
  */
 static int board_hw_init(void) {
-    // 自动加载所有在 JSON 中定义的 GPIO
-    mhal_gpio_load_cfg(g_board_gpio_cfg, g_board_gpio_cnt);
+    systick_config();
     
     return 0;
 }

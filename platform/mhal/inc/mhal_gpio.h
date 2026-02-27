@@ -27,17 +27,35 @@ typedef struct {
     mhal_gpio_status_t init_level;
 } mhal_gpio_cfg_t;
 
+/* 板级 GPIO 端口索引（与 port_gpio.c 的映射保持一致） */
+enum {
+    GPIO_PORT_A = 0,
+    GPIO_PORT_B,
+    GPIO_PORT_C,
+    GPIO_PORT_D,
+    GPIO_PORT_E,
+    GPIO_PORT_F,
+    GPIO_PORT_G,
+};
+
+#define GPIO_PIN(n) ((uint16_t)(1U << (n)))
+
+/* 板级 GPIO ID（由 gpio_table.def 展开） */
+typedef enum {
+#define GPIO_ITEM(name, port, pin, mode, init_level) MHAL_GPIO_ID_##name,
+#include "mhal_gpio_table.def"
+#undef GPIO_ITEM
+    MHAL_GPIO_ID_MAX
+} mhal_gpio_id_t;
+
 // 基础物理操作接口
 void mhal_gpio_init(uint8_t port_idx, uint16_t pin_mask, mhal_gpio_mode_t mode);
 void mhal_gpio_write(uint8_t port_idx, uint16_t pin_mask, mhal_gpio_status_t status);
 mhal_gpio_status_t mhal_gpio_read(uint8_t port_idx, uint16_t pin_mask);
 void mhal_gpio_toggle(uint8_t port_idx, uint16_t pin_mask);
 
-// 批量加载配置
-void mhal_gpio_load_cfg(const mhal_gpio_cfg_t *cfg_array, size_t count);
-
-// 基于 ID 的高级操作接口 (别名操作核心)
-// 这里使用 int 或 uint32_t 作为 id，避免循环依赖
+// 基于 ID 的高级操作接口
+// 使用 uint32_t 作为 id，避免与项目层枚举产生循环依赖
 void mhal_gpio_id_write(uint32_t id, mhal_gpio_status_t status);
 void mhal_gpio_id_toggle(uint32_t id);
 mhal_gpio_status_t mhal_gpio_id_read(uint32_t id);
