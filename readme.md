@@ -69,7 +69,7 @@ openocd -f tools/gd32f303_cmsisdap.cfg -c "program build/demo_product.elf verify
 ## GPIO 配置方式（推荐）
 
 当前 GPIO 采用 **X-Macro 单一数据源**，在
-`platform/mhal/inc/mhal_gpio_table.def` 中维护：
+`projects/demo_product/bsp/board_config/mhal_gpio_table.def` 中维护：
 
 - `platform/mhal/inc/mhal_gpio.h` 自动展开 GPIO ID 枚举
 - `platform/mhal/src/mhal_gpio.c` 自动展开 GPIO 配置数组并在 BOARD 阶段自动初始化
