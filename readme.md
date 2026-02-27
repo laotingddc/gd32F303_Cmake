@@ -57,6 +57,13 @@ make
 openocd -f tools/gd32f303_cmsisdap.cfg -c "program build/demo_product.elf verify reset exit"
 ```
 
+## CI/CD
+
+仓库已提供 GitHub Actions 自动化流程（`.github/workflows/ci.yml`），支持 `push` / `pull_request` / 手动触发：
+
+- **CMake + GCC 构建**：在 Ubuntu 环境安装 `gcc-arm-none-eabi`，使用 CMake + Ninja 完成交叉编译，并上传产物。
+- **代码审查**：使用 `cppcheck` 进行静态检查，执行报告脚本单元测试后，在 `review/code-review-report.html` 生成中文 HTML 审查报告并上传构件。
+
 ## 架构说明
 
 采用分层架构设计：
