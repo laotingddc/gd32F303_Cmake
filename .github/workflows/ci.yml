@@ -1,0 +1,89 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: CMake + GCC 构建
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+
+      - name: 安装依赖
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cmake ninja-build gcc-arm-none-eabi binutils-arm-none-eabi
+
+      - name: 配置工程
+        run: cmake -S . -B build -G Ninja -DCMAKE_TOOLCHAIN_FILE=arm-none-eabi.cmake
+
+      - name: 编译
+        run: cmake --build build --parallel
+
+      - name: 上传构建产物
+        uses: actions/upload-artifact@v4
+        with:
+          name: firmware-build
+          path: |
+            build/**/*.elf
+            build/**/*.map
+            build/**/*.bin
+          if-no-files-found: warn
+
+  code-review:
+    name: 代码审查（HTML 中文报告）
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+
+      - name: 安装 cppcheck
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cppcheck python3
+
+      - name: 运行静态检查
+        run: |
+          mkdir -p review
+          cppcheck \
+            --enable=warning,style,performance,portability,information \
+            --inline-suppr \
+            --suppress=missingIncludeSystem \
+            --xml \
+            --xml-version=2 \
+            -i build \
+            -i .git \
+            -i platform/chip/gd32f30x/sdk \
+            . 2> review/cppcheck.xml || true
+
+      - name: 测试报告生成脚本
+        run: python3 -m unittest tools/test_generate_review_report.py
+
+      - name: 生成中文 HTML 报告
+        run: python3 tools/generate_review_report.py --input review/cppcheck.xml --output review/code-review-report.html
+
+      - name: 生成摘要
+        run: |
+          {
+            echo "## 代码审查结果";
+            echo "";
+            echo "- 已生成中文 HTML 报告：\`review/code-review-report.html\`";
+            echo "- 请在 Artifacts 下载：\`code-review-report-html\`";
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: 上传审查报告
+        uses: actions/upload-artifact@v4
+        with:
+          name: code-review-report-html
+          path: review/code-review-report.html
