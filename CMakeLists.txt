@@ -42,6 +42,7 @@ include_directories(
     platform/mhal/inc
     platform/common/log
     platform/common/utils
+    projects/demo_product/bsp/board_config
     ${MCU_SPECIFIC_INCLUDES}
 )
 
