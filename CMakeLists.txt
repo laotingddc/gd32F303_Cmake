@@ -54,6 +54,7 @@ file(GLOB_RECURSE DRIVER_SOURCES "platform/drivers/**/*.c")
 # L1 MHAL 通用层源码 (新增加的通用逻辑层)
 set(MHAL_COMMON_SOURCES
     platform/mhal/src/mhal_gpio.c
+    platform/mhal/src/mhal_spi.c
 )
 
 # 产品特定代码
