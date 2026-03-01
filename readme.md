@@ -82,3 +82,57 @@ openocd -f tools/gd32f303_cmsisdap.cfg -c "program build/demo_product.elf verify
 - `platform/mhal/src/mhal_gpio.c` 自动展开 GPIO 配置数组并在 BOARD 阶段自动初始化
 
 这样无需 JSON/Python 生成步骤，配置与代码同源、可直接编译期检查。
+
+## SPI 配置方式（X-Macro）
+
+当前 SPI 也采用 **X-Macro 单一数据源**，在
+`projects/demo_product/bsp/board_config/mhal_spi_table.def` 中维护：
+
+- `platform/mhal/inc/mhal_spi.h` 自动展开 SPI ID 枚举
+- `platform/mhal/src/mhal_spi.c` 自动展开 SPI 设备配置并完成 BOARD 阶段初始化
+- `platform/mhal/src/gd32f30x/port_spi.c` 提供 GD32F30x 端口实现（SPI1/SPI2）
+
+示例（当前工程）：
+
+- `EXT_FLASH -> SPI1 + PE2(CS)`
+
+后续新增 SPI 外设时，只需在 `mhal_spi_table.def` 增加 `SPI_ITEM(...)`。
+
+## SFUD 集成说明
+
+工程已集成 SFUD，目录：
+
+- `platform/drivers/sfud/inc`
+- `platform/drivers/sfud/src`
+- `platform/drivers/sfud/port`
+
+当前适配关系：
+
+- `platform/drivers/sfud/port/sfud_port.c` 通过 `mhal_spi` 适配 SFUD 的 `spi.wr`
+- 片选由 `mhal_spi_id_cs_select/release` 控制
+- 日志通过 `platform/common/log/rtt_log` 输出
+
+配置文件：
+
+- `platform/drivers/sfud/inc/sfud_cfg.h`
+  - 已配置设备索引 `SFUD_EXT_FLASH_DEVICE_INDEX`
+  - 设备名为 `EXT_FLASH`
+  - 启用 `SFUD_USING_SFDP` 与 `SFUD_USING_FLASH_INFO_TABLE`
+
+## Demo 测试（SFUD）
+
+`projects/demo_product/main.c` 已切换为 SFUD 测试流程：
+
+1. 调用 `sfud_init()`
+2. 通过 `sfud_get_device(SFUD_EXT_FLASH_DEVICE_INDEX)` 获取外部 Flash
+3. 打印 JEDEC 与容量信息
+4. 读取地址 `0x00000000` 起始的 16 字节并打印
+
+典型成功日志包含：
+
+- `Start initialize Serial Flash Universal Driver(SFUD)`
+- `manufacturer ID/type ID/capacity ID`
+- `Check SFDP header is OK`
+- `Capacity: ...`
+
+说明 SPI 与 SFUD 端口链路已打通。

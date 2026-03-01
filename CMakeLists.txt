@@ -43,6 +43,7 @@ include_directories(
     platform/common/log
     platform/common/utils
     platform/drivers/sfud
+    platform/drivers/sfud/inc
     projects/demo_product/bsp/board_config
     ${MCU_SPECIFIC_INCLUDES}
 )

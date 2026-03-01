@@ -28,8 +28,33 @@
 
 #include <sfud.h>
 #include <stdarg.h>
+#include <stdio.h>
+#include "mhal_spi.h"
+#include "mhal_delay.h"
+#include "rtt_log.h"
 
 static char log_buf[256];
+
+typedef struct {
+    mhal_spi_id_t spi_id;
+} sfud_port_ctx_t;
+
+static sfud_port_ctx_t s_sfud_port_ctx;
+
+static void spi_lock(const sfud_spi *spi)
+{
+    (void)spi;
+}
+
+static void spi_unlock(const sfud_spi *spi)
+{
+    (void)spi;
+}
+
+static void retry_delay_1ms(void)
+{
+    mhal_delay_ms(1U);
+}
 
 void sfud_log_debug(const char *file, const long line, const char *format, ...);
 
@@ -38,49 +63,55 @@ void sfud_log_debug(const char *file, const long line, const char *format, ...);
  */
 static sfud_err spi_write_read(const sfud_spi *spi, const uint8_t *write_buf, size_t write_size, uint8_t *read_buf,
         size_t read_size) {
-    sfud_err result = SFUD_SUCCESS;
-    uint8_t send_data, read_data;
+    sfud_port_ctx_t *ctx;
+    int ret;
 
-    /**
-     * add your spi write and read code
-     */
+    if ((spi == NULL) || (spi->user_data == NULL)) {
+        return SFUD_ERR_READ;
+    }
 
-    return result;
+    ctx = (sfud_port_ctx_t *)spi->user_data;
+
+    mhal_spi_id_cs_select((uint32_t)ctx->spi_id);
+
+    if ((write_buf != NULL) && (write_size > 0U)) {
+        ret = mhal_spi_id_transfer_no_cs((uint32_t)ctx->spi_id, write_buf, NULL, write_size);
+        if (ret != 0) {
+            mhal_spi_id_cs_release((uint32_t)ctx->spi_id);
+            return SFUD_ERR_WRITE;
+        }
+    }
+
+    if ((read_buf != NULL) && (read_size > 0U)) {
+        ret = mhal_spi_id_transfer_no_cs((uint32_t)ctx->spi_id, NULL, read_buf, read_size);
+        if (ret != 0) {
+            mhal_spi_id_cs_release((uint32_t)ctx->spi_id);
+            return SFUD_ERR_READ;
+        }
+    }
+
+    mhal_spi_id_cs_release((uint32_t)ctx->spi_id);
+
+    return SFUD_SUCCESS;
 }
-
-#ifdef SFUD_USING_QSPI
-/**
- * read flash data by QSPI
- */
-static sfud_err qspi_read(const struct __sfud_spi *spi, uint32_t addr, sfud_qspi_read_cmd_format *qspi_read_cmd_format,
-        uint8_t *read_buf, size_t read_size) {
-    sfud_err result = SFUD_SUCCESS;
-
-    /**
-     * add your qspi read flash data code
-     */
-
-    return result;
-}
-#endif /* SFUD_USING_QSPI */
 
 sfud_err sfud_spi_port_init(sfud_flash *flash) {
     sfud_err result = SFUD_SUCCESS;
 
-    /**
-     * add your port spi bus and device object initialize code like this:
-     * 1. rcc initialize
-     * 2. gpio initialize
-     * 3. spi device initialize
-     * 4. flash->spi and flash->retry item initialize
-     *    flash->spi.wr = spi_write_read; //Required
-     *    flash->spi.qspi_read = qspi_read; //Required when QSPI mode enable
-     *    flash->spi.lock = spi_lock;
-     *    flash->spi.unlock = spi_unlock;
-     *    flash->spi.user_data = &spix;
-     *    flash->retry.delay = null;
-     *    flash->retry.times = 10000; //Required
-     */
+    if (flash == NULL) {
+        return SFUD_ERR_NOT_FOUND;
+    }
+
+    /* 当前工程先固定把 SFUD 的 EXT_FLASH 绑定到 mhal_spi 的 EXT_FLASH */
+    s_sfud_port_ctx.spi_id = MHAL_SPI_ID_EXT_FLASH;
+
+    flash->spi.wr = spi_write_read;
+    flash->spi.lock = spi_lock;
+    flash->spi.unlock = spi_unlock;
+    flash->spi.user_data = &s_sfud_port_ctx;
+
+    flash->retry.delay = retry_delay_1ms;
+    flash->retry.times = 60 * 1000; /* 最长约 60s，覆盖整片擦除等待 */
 
     return result;
 }
@@ -98,10 +129,14 @@ void sfud_log_debug(const char *file, const long line, const char *format, ...) 
 
     /* args point to the first variable parameter */
     va_start(args, format);
-    printf("[SFUD](%s:%ld) ", file, line);
-    /* must use vprintf to print */
+
+    if (file == NULL) {
+        file = "?";
+    }
+
     vsnprintf(log_buf, sizeof(log_buf), format, args);
-    printf("%s\n", log_buf);
+    LOG_D("[SFUD](%s:%ld) %s", file, line, log_buf);
+
     va_end(args);
 }
 
@@ -116,9 +151,9 @@ void sfud_log_info(const char *format, ...) {
 
     /* args point to the first variable parameter */
     va_start(args, format);
-    printf("[SFUD]");
-    /* must use vprintf to print */
+
     vsnprintf(log_buf, sizeof(log_buf), format, args);
-    printf("%s\n", log_buf);
+    LOG_I("[SFUD] %s", log_buf);
+
     va_end(args);
 }
