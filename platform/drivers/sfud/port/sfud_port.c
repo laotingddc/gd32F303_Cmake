@@ -29,14 +29,14 @@
 #include <sfud.h>
 #include <stdarg.h>
 #include <stdio.h>
-#include "mhal_spi.h"
-#include "mhal_delay.h"
+#include "hal_spi.h"
+#include "hal_delay.h"
 #include "rtt_log.h"
 
 static char log_buf[256];
 
 typedef struct {
-    mhal_spi_id_t spi_id;
+    hal_spi_id_t spi_id;
 } sfud_port_ctx_t;
 
 static sfud_port_ctx_t s_sfud_port_ctx;
@@ -53,7 +53,7 @@ static void spi_unlock(const sfud_spi *spi)
 
 static void retry_delay_1ms(void)
 {
-    mhal_delay_ms(1U);
+    hal_delay_ms(1U);
 }
 
 void sfud_log_debug(const char *file, const long line, const char *format, ...);
@@ -72,25 +72,25 @@ static sfud_err spi_write_read(const sfud_spi *spi, const uint8_t *write_buf, si
 
     ctx = (sfud_port_ctx_t *)spi->user_data;
 
-    mhal_spi_id_cs_select((uint32_t)ctx->spi_id);
+    hal_spi_id_cs_select((uint32_t)ctx->spi_id);
 
     if ((write_buf != NULL) && (write_size > 0U)) {
-        ret = mhal_spi_id_transfer_no_cs((uint32_t)ctx->spi_id, write_buf, NULL, write_size);
+        ret = hal_spi_id_transfer_no_cs((uint32_t)ctx->spi_id, write_buf, NULL, write_size);
         if (ret != 0) {
-            mhal_spi_id_cs_release((uint32_t)ctx->spi_id);
+            hal_spi_id_cs_release((uint32_t)ctx->spi_id);
             return SFUD_ERR_WRITE;
         }
     }
 
     if ((read_buf != NULL) && (read_size > 0U)) {
-        ret = mhal_spi_id_transfer_no_cs((uint32_t)ctx->spi_id, NULL, read_buf, read_size);
+        ret = hal_spi_id_transfer_no_cs((uint32_t)ctx->spi_id, NULL, read_buf, read_size);
         if (ret != 0) {
-            mhal_spi_id_cs_release((uint32_t)ctx->spi_id);
+            hal_spi_id_cs_release((uint32_t)ctx->spi_id);
             return SFUD_ERR_READ;
         }
     }
 
-    mhal_spi_id_cs_release((uint32_t)ctx->spi_id);
+    hal_spi_id_cs_release((uint32_t)ctx->spi_id);
 
     return SFUD_SUCCESS;
 }
@@ -102,8 +102,8 @@ sfud_err sfud_spi_port_init(sfud_flash *flash) {
         return SFUD_ERR_NOT_FOUND;
     }
 
-    /* 褰撳墠宸ョ▼鍏堝浐瀹氭妸 SFUD 鐨?EXT_FLASH 缁戝畾鍒?mhal_spi 鐨?EXT_FLASH */
-    s_sfud_port_ctx.spi_id = MHAL_SPI_ID_EXT_FLASH;
+    /* 褰撳墠宸ョ▼鍏堝浐瀹氭妸 SFUD 鐨?EXT_FLASH 缁戝畾鍒?hal_spi 鐨?EXT_FLASH */
+    s_sfud_port_ctx.spi_id = HAL_SPI_ID_EXT_FLASH;
 
     flash->spi.wr = spi_write_read;
     flash->spi.lock = spi_lock;

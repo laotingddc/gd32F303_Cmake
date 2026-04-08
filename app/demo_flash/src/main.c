@@ -1,5 +1,5 @@
-﻿#include "mhal_delay.h"
-#include "mhal_gpio.h"
+﻿#include "hal_delay.h"
+#include "hal_gpio.h"
 #include "rtt_log_compat.h"
 #include "sfud.h"
 
@@ -51,10 +51,10 @@ int main(void)
     sfud_flash_probe_test();
 
     while (1) {
-        mhal_gpio_id_toggle(MHAL_GPIO_ID_BOARD_LED);
-        mhal_gpio_id_toggle(MHAL_GPIO_ID_LED_DATA);
-        mhal_gpio_id_toggle(MHAL_GPIO_ID_LED_STATUS);
-        mhal_delay_ms(500);
+        hal_gpio_id_toggle(HAL_GPIO_ID_BOARD_LED);
+        hal_gpio_id_toggle(HAL_GPIO_ID_LED_DATA);
+        hal_gpio_id_toggle(HAL_GPIO_ID_LED_STATUS);
+        hal_delay_ms(500);
     }
 }
 

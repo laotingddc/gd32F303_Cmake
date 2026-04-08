@@ -9,6 +9,10 @@ include(${CMAKE_TOOLCHAIN_FILE})
 # 2. 椤圭洰瀹氫箟
 project(Platform_Base_Project C ASM)
 
+# Fixed target selection (single-chip GD32F303)
+set(BOARD demo_board CACHE STRING "Board name under boards/")
+set(APP demo_flash CACHE STRING "App name under app/")
+
 # 3. GD32F30x 鑺墖閰嶇疆
 set(CPU_FLAGS "-mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=hard")
 add_definitions(-DGD32F30X_HD)
@@ -19,14 +23,14 @@ set(MCU_SPECIFIC_INCLUDES
     platform/chip/gd32f30x/sdk/CMSIS
     platform/chip/gd32f30x/sdk/CMSIS/GD/GD32F30x/Include
     platform/chip/gd32f30x/sdk/GD32F30x_standard_peripheral/Include
-    platform/mhal/src/gd32f30x
+    platform/hal/src/gd32f30x
 )
 
 # 鑺墖 SDK 婧愭枃浠?
 file(GLOB MCU_SPECIFIC_SOURCES 
     "platform/chip/gd32f30x/sdk/CMSIS/GD/GD32F30x/Source/*.c"
     "platform/chip/gd32f30x/sdk/GD32F30x_standard_peripheral/Source/*.c"
-    "platform/mhal/src/gd32f30x/*.c"
+    "platform/hal/src/gd32f30x/*.c"
 )
 
 # 鍚姩鏂囦欢
@@ -39,37 +43,43 @@ set(CMAKE_EXE_LINKER_FLAGS "${CPU_FLAGS} -T${MCU_LINKER_SCRIPT} -Wl,--gc-section
 
 # 6. 鍖呭惈鐩綍
 include_directories(
-    platform/mhal/inc
-    platform/common/reusable
+    platform/hal/inc
+    platform/utils
     platform/drivers/sfud
     platform/drivers/sfud/inc
-    projects/demo_product/bsp/board_config
+    boards/${BOARD}
+    boards/${BOARD}/config
+    app/${APP}/inc
     ${MCU_SPECIFIC_INCLUDES}
 )
 
 # 7. 姹囨€绘簮鐮?
 # L5/L3 閫氱敤婧愮爜
-file(GLOB_RECURSE COMMON_SOURCES "platform/common/**/*.c")
+file(GLOB_RECURSE COMMON_SOURCES "platform/utils/*.c")
 file(GLOB_RECURSE DRIVER_SOURCES "platform/drivers/**/*.c")
 
 # L1 MHAL 閫氱敤灞傛簮鐮?(鏂板鍔犵殑閫氱敤閫昏緫灞?
-set(MHAL_COMMON_SOURCES
-    platform/mhal/src/mhal_gpio.c
-    platform/mhal/src/mhal_spi.c
+set(HAL_COMMON_SOURCES
+    platform/hal/src/hal_gpio.c
+    platform/hal/src/hal_spi.c
 )
 
 # 浜у搧鐗瑰畾浠ｇ爜
-set(PRODUCT_SOURCES 
-    projects/demo_product/main.c
-    projects/demo_product/bsp/board_config/board_init.c
+set(APP_SOURCES
+    app/${APP}/src/main.c
+)
+
+set(BOARD_SOURCES
+    boards/${BOARD}/board.c
 )
 
 # 8. 鐢熸垚鍙墽琛屾枃浠?
 add_executable(${PROJECT_NAME}.elf 
-    ${PRODUCT_SOURCES}
+    ${APP_SOURCES}
+    ${BOARD_SOURCES}
     ${COMMON_SOURCES}
     ${DRIVER_SOURCES}
-    ${MHAL_COMMON_SOURCES}
+    ${HAL_COMMON_SOURCES}
     ${MCU_SPECIFIC_SOURCES}
     ${MCU_STARTUP_FILE}
 )
@@ -80,4 +90,5 @@ add_custom_command(TARGET ${PROJECT_NAME}.elf POST_BUILD
     COMMAND ${CMAKE_OBJCOPY} -O ihex ${PROJECT_NAME}.elf ${PROJECT_NAME}.hex
     COMMAND ${CMAKE_SIZE} ${PROJECT_NAME}.elf
 )
+
 

@@ -1,10 +1,10 @@
 #include "auto_init.h"
-#include "board_init.h"
+#include "board.h"
 #include "systick.h"
 
 /**
  * @brief 板级硬件初始化
- * 板级基础硬件初始化（GPIO 由 mhal_gpio.c 中 INIT_BOARD_EXPORT_PRIO 自动初始化）
+ * 板级基础硬件初始化（GPIO 由 hal_gpio.c 中 INIT_BOARD_EXPORT_PRIO 自动初始化）
  */
 static int board_hw_init(void) {
     systick_config();

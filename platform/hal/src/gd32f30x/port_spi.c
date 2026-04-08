@@ -1,46 +1,46 @@
-#include "mhal_spi.h"
+#include "hal_spi.h"
 #include "gd32f30x.h"
 
 #define SPI_WAIT_TIMEOUT (1000000UL)
 
-static uint32_t _to_spi_periph(mhal_spi_bus_t bus)
+static uint32_t _to_spi_periph(hal_spi_bus_t bus)
 {
     switch (bus) {
-        case MHAL_SPI_BUS_1: return SPI1;
-        case MHAL_SPI_BUS_2: return SPI2;
+        case HAL_SPI_BUS_1: return SPI1;
+        case HAL_SPI_BUS_2: return SPI2;
         default: return 0U;
     }
 }
 
-static uint32_t _to_spi_ck_mode(mhal_spi_mode_t mode)
+static uint32_t _to_spi_ck_mode(hal_spi_mode_t mode)
 {
     switch (mode) {
-        case MHAL_SPI_MODE_0: return SPI_CK_PL_LOW_PH_1EDGE;
-        case MHAL_SPI_MODE_1: return SPI_CK_PL_LOW_PH_2EDGE;
-        case MHAL_SPI_MODE_2: return SPI_CK_PL_HIGH_PH_1EDGE;
-        case MHAL_SPI_MODE_3: return SPI_CK_PL_HIGH_PH_2EDGE;
+        case HAL_SPI_MODE_0: return SPI_CK_PL_LOW_PH_1EDGE;
+        case HAL_SPI_MODE_1: return SPI_CK_PL_LOW_PH_2EDGE;
+        case HAL_SPI_MODE_2: return SPI_CK_PL_HIGH_PH_1EDGE;
+        case HAL_SPI_MODE_3: return SPI_CK_PL_HIGH_PH_2EDGE;
         default: return SPI_CK_PL_LOW_PH_1EDGE;
     }
 }
 
-static uint32_t _to_spi_prescaler(mhal_spi_baud_div_t baud_div)
+static uint32_t _to_spi_prescaler(hal_spi_baud_div_t baud_div)
 {
     switch (baud_div) {
-        case MHAL_SPI_BAUD_DIV_2:   return SPI_PSC_2;
-        case MHAL_SPI_BAUD_DIV_4:   return SPI_PSC_4;
-        case MHAL_SPI_BAUD_DIV_8:   return SPI_PSC_8;
-        case MHAL_SPI_BAUD_DIV_16:  return SPI_PSC_16;
-        case MHAL_SPI_BAUD_DIV_32:  return SPI_PSC_32;
-        case MHAL_SPI_BAUD_DIV_64:  return SPI_PSC_64;
-        case MHAL_SPI_BAUD_DIV_128: return SPI_PSC_128;
-        case MHAL_SPI_BAUD_DIV_256: return SPI_PSC_256;
+        case HAL_SPI_BAUD_DIV_2:   return SPI_PSC_2;
+        case HAL_SPI_BAUD_DIV_4:   return SPI_PSC_4;
+        case HAL_SPI_BAUD_DIV_8:   return SPI_PSC_8;
+        case HAL_SPI_BAUD_DIV_16:  return SPI_PSC_16;
+        case HAL_SPI_BAUD_DIV_32:  return SPI_PSC_32;
+        case HAL_SPI_BAUD_DIV_64:  return SPI_PSC_64;
+        case HAL_SPI_BAUD_DIV_128: return SPI_PSC_128;
+        case HAL_SPI_BAUD_DIV_256: return SPI_PSC_256;
         default: return SPI_PSC_8;
     }
 }
 
-static void _spi_bus_pin_init(mhal_spi_bus_t bus)
+static void _spi_bus_pin_init(hal_spi_bus_t bus)
 {
-    if (bus == MHAL_SPI_BUS_1) {
+    if (bus == HAL_SPI_BUS_1) {
         /* SPI1 固定引脚：PB13(SCK), PB14(MISO), PB15(MOSI) */
         rcu_periph_clock_enable(RCU_GPIOB);
         rcu_periph_clock_enable(RCU_SPI1);
@@ -50,7 +50,7 @@ static void _spi_bus_pin_init(mhal_spi_bus_t bus)
         return;
     }
 
-    if (bus == MHAL_SPI_BUS_2) {
+    if (bus == HAL_SPI_BUS_2) {
         /* SPI2 采用重映射到 PC10/PC11/PC12，避免占用调试口相关引脚 */
         rcu_periph_clock_enable(RCU_AF);
         rcu_periph_clock_enable(RCU_GPIOC);
@@ -62,7 +62,7 @@ static void _spi_bus_pin_init(mhal_spi_bus_t bus)
     }
 }
 
-int mhal_spi_port_bus_init(mhal_spi_bus_t bus, mhal_spi_mode_t mode, mhal_spi_baud_div_t baud_div)
+int hal_spi_port_bus_init(hal_spi_bus_t bus, hal_spi_mode_t mode, hal_spi_baud_div_t baud_div)
 {
     uint32_t spi_periph = _to_spi_periph(bus);
     if (spi_periph == 0U) {
@@ -88,7 +88,7 @@ int mhal_spi_port_bus_init(mhal_spi_bus_t bus, mhal_spi_mode_t mode, mhal_spi_ba
     return 0;
 }
 
-int mhal_spi_port_transfer_byte(mhal_spi_bus_t bus, uint8_t tx, uint8_t *rx)
+int hal_spi_port_transfer_byte(hal_spi_bus_t bus, uint8_t tx, uint8_t *rx)
 {
     uint32_t spi_periph = _to_spi_periph(bus);
     uint32_t timeout = SPI_WAIT_TIMEOUT;

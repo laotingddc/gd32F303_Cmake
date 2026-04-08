@@ -5,12 +5,12 @@
  *   在包含本文件前定义 SPI_ITEM(name, bus, mode, baud_div, cs_port, cs_pin)
  *
  * 约定：
- *   - bus     : MHAL_SPI_BUS_1 / MHAL_SPI_BUS_2
- *   - mode    : MHAL_SPI_MODE_0 ~ MHAL_SPI_MODE_3
- *   - baud_div: MHAL_SPI_BAUD_DIV_2 ~ MHAL_SPI_BAUD_DIV_256
+ *   - bus     : HAL_SPI_BUS_1 / HAL_SPI_BUS_2
+ *   - mode    : HAL_SPI_MODE_0 ~ HAL_SPI_MODE_3
+ *   - baud_div: HAL_SPI_BAUD_DIV_2 ~ HAL_SPI_BAUD_DIV_256
  *   - cs_port : GPIO_PORT_A ~ GPIO_PORT_G
  *   - cs_pin  : GPIO_PIN(n)
  */
 
 /* 示例：SPI1 + PE2 作为片选 */
-SPI_ITEM(EXT_FLASH, MHAL_SPI_BUS_1, MHAL_SPI_MODE_0, MHAL_SPI_BAUD_DIV_8, GPIO_PORT_E, GPIO_PIN(2))
+SPI_ITEM(EXT_FLASH, HAL_SPI_BUS_1, HAL_SPI_MODE_0, HAL_SPI_BAUD_DIV_8, GPIO_PORT_E, GPIO_PIN(2))
