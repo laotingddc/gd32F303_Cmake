@@ -1,4 +1,4 @@
-/*
+﻿/*
  * This file is part of the Serial Flash Universal Driver Library.
  *
  * Copyright (c) 2016-2018, Armink, <armink.ztl@gmail.com>
@@ -102,7 +102,7 @@ sfud_err sfud_spi_port_init(sfud_flash *flash) {
         return SFUD_ERR_NOT_FOUND;
     }
 
-    /* 当前工程先固定把 SFUD 的 EXT_FLASH 绑定到 mhal_spi 的 EXT_FLASH */
+    /* 褰撳墠宸ョ▼鍏堝浐瀹氭妸 SFUD 鐨?EXT_FLASH 缁戝畾鍒?mhal_spi 鐨?EXT_FLASH */
     s_sfud_port_ctx.spi_id = MHAL_SPI_ID_EXT_FLASH;
 
     flash->spi.wr = spi_write_read;
@@ -111,7 +111,7 @@ sfud_err sfud_spi_port_init(sfud_flash *flash) {
     flash->spi.user_data = &s_sfud_port_ctx;
 
     flash->retry.delay = retry_delay_1ms;
-    flash->retry.times = 60 * 1000; /* 最长约 60s，覆盖整片擦除等待 */
+    flash->retry.times = 60 * 1000; /* 鏈€闀跨害 60s锛岃鐩栨暣鐗囨摝闄ょ瓑寰?*/
 
     return result;
 }
@@ -135,7 +135,7 @@ void sfud_log_debug(const char *file, const long line, const char *format, ...) 
     }
 
     vsnprintf(log_buf, sizeof(log_buf), format, args);
-    LOG_D("[SFUD](%s:%ld) %s", file, line, log_buf);
+    rtt_log_printf(0U, "[SFUD](%s:%ld) %s", file, line, log_buf);
 
     va_end(args);
 }
@@ -153,7 +153,9 @@ void sfud_log_info(const char *format, ...) {
     va_start(args, format);
 
     vsnprintf(log_buf, sizeof(log_buf), format, args);
-    LOG_I("[SFUD] %s", log_buf);
+    rtt_log_printf(0U, "[SFUD] %s", log_buf);
 
     va_end(args);
 }
+
+

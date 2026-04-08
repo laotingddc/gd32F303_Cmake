@@ -1,6 +1,6 @@
-#include "mhal_delay.h"
+﻿#include "mhal_delay.h"
 #include "mhal_gpio.h"
-#include "rtt_log.h"
+#include "rtt_log_compat.h"
 #include "sfud.h"
 
 static void sfud_flash_probe_test(void)
@@ -47,6 +47,7 @@ static void sfud_flash_probe_test(void)
 
 int main(void)
 {
+    rtt_log_init();
     sfud_flash_probe_test();
 
     while (1) {
@@ -56,3 +57,5 @@ int main(void)
         mhal_delay_ms(500);
     }
 }
+
+

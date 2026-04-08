@@ -1,4 +1,4 @@
-/*********************************************************************
+﻿/*********************************************************************
 *                    SEGGER Microcontroller GmbH                     *
 *                        The Embedded Experts                        *
 **********************************************************************
@@ -57,6 +57,10 @@ Revision: $Rev: 24316 $
 
 #ifndef SEGGER_RTT_CONF_H
 #define SEGGER_RTT_CONF_H
+
+#ifndef RTT_USE_ASM
+#define RTT_USE_ASM (0)
+#endif
 
 #ifdef __IAR_SYSTEMS_ICC__
   #include <intrinsics.h>
@@ -427,3 +431,4 @@ void OS_SIM_LeaveCriticalSection(void);
 
 #endif
 /*************************** End of file ****************************/
+
