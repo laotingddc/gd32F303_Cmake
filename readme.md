@@ -124,3 +124,7 @@ openocd -f tools/gd32f303_cmsisdap.cfg -c "program build/Platform_Base_Project.e
 - `Capacity: ...`
 
 说明 SPI 与 SFUD 端口链路已打通。
+
+## 贡献指南
+
+- 所有文本文件（如 `*.c`、`*.h`、`CMakeLists.txt`、`*.md`）统一使用 **UTF-8** 编码保存，避免出现乱码与编码漂移。
