@@ -6,40 +6,21 @@
 
 ```
 gd32F303_Cmake/
-├── app/
-│   └── demo_flash/             # 示例应用
-│       ├── inc/
-│       └── src/
+├── platform/                    # 平台层（芯片 SDK / HAL / 驱动 / 工具组件）
+│   ├── chip/gd32f30x/          # 芯片支持包（sdk/startup/linker）
+│   ├── hal/                    # 硬件抽象层（inc/src）
+│   ├── drivers/                # 第三方驱动（当前含 sfud）
+│   └── utils/                  # 通用工具（RTT 日志等）
 │
-├── boards/
-│   └── demo_board/             # 示例板级配置
-│       ├── config/             # GPIO/SPI X-Macro 表
-│       ├── board.c
-│       └── board.h
-│
-├── platform/                    # 平台层 (硬件相关)
-│   ├── chip/gd32f30x/          # GD32F30x 芯片支持
-│   │   ├── sdk/                # 官方标准外设库
-│   │   ├── startup/            # 启动文件
-│   │   └── linker/             # 链接脚本
-│   ├── hal/                    # MCU 硬件抽象层
-│   │   ├── inc/                # 统一接口定义
-│   │   └── src/                # 接口实现
-│   ├── drivers/
-│   │   └── sfud/               # SFUD 驱动与移植
-│   └── utils/                  # RTT 日志与工具函数
-│
-├── tools/                      # 开发工具
-│   ├── GD32F30x_HD.svd         # 调试用 SVD 文件
-│   ├── gd32f303_cmsisdap.cfg   # OpenOCD 配置
-│   └── ...
-│
-├── CMakeLists.txt              # 顶层构建配置
-├── arm-none-eabi.cmake         # 工具链配置
-└── .vscode/                    # VSCode 配置
+├── boards/demo_board/          # 板级支持包
+├── app/demo_flash/             # 应用代码（main 在 src/main.c）
+├── tools/                      # 开发工具与脚本
+├── CMakeLists.txt              # 唯一 CMake 入口（统一聚合所有源码）
+└── arm-none-eabi.cmake         # 工具链配置
 ```
 
-以仓库当前目录为准，示意图与实际目录保持同步维护。
+> 说明：当前仓库**不使用** `platform/CMakeLists.txt` 子目录编排，
+> 平台层源码由顶层 `CMakeLists.txt` 统一收集与链接。
 
 ## 快速开始
 
@@ -74,10 +55,11 @@ openocd -f tools/gd32f303_cmsisdap.cfg -c "program build/Platform_Base_Project.e
 
 采用分层架构设计：
 
-- **Platform 层**: 提供硬件抽象，包含芯片 SDK、HAL 接口定义及实现
-- **App + Boards 层**: 具体应用与板级配置，承载业务逻辑和硬件装配
+- **platform 层**：芯片 SDK、HAL、驱动与通用工具。
+- **boards 层**：板级引脚与外设映射。
+- **app 层**：业务逻辑与应用入口。
 
-应用层通过 HAL 接口访问硬件，实现业务代码与底层驱动的解耦。
+当前构建入口为仓库根目录 `CMakeLists.txt`，统一聚合上述目录源码并生成固件。
 
 ## GPIO 配置方式（推荐）
 
@@ -102,7 +84,7 @@ openocd -f tools/gd32f303_cmsisdap.cfg -c "program build/Platform_Base_Project.e
 
 - `EXT_FLASH -> SPI1 + PE2(CS)`
 
-后续新增 SPI 外设时，只需在 `boards/demo_board/config/spi_table.def` 增加 `SPI_ITEM(...)`。
+后续新增 SPI 外设时，只需在 `spi_table.def` 增加 `SPI_ITEM(...)`。
 
 ## SFUD 集成说明
 
@@ -116,7 +98,7 @@ openocd -f tools/gd32f303_cmsisdap.cfg -c "program build/Platform_Base_Project.e
 
 - `platform/drivers/sfud/port/sfud_port.c` 通过 `hal_spi` 适配 SFUD 的 `spi.wr`
 - 片选由 `hal_spi_id_cs_select/release` 控制
-- 日志通过 `platform/utils/rtt_log.c` 输出
+- 日志通过 `platform/utils/rtt_log` 输出
 
 配置文件：
 
@@ -142,3 +124,7 @@ openocd -f tools/gd32f303_cmsisdap.cfg -c "program build/Platform_Base_Project.e
 - `Capacity: ...`
 
 说明 SPI 与 SFUD 端口链路已打通。
+
+## 贡献指南
+
+- 所有文本文件（如 `*.c`、`*.h`、`CMakeLists.txt`、`*.md`）统一使用 **UTF-8** 编码保存，避免出现乱码与编码漂移。
