@@ -14,13 +14,15 @@ gd32F303_Cmake/
 │
 ├── boards/demo_board/          # 板级支持包
 ├── app/demo_flash/             # 应用代码（main 在 src/main.c）
+├── projects/demo_product/      # 产品层（默认 board/app 选择）
 ├── tools/                      # 开发工具与脚本
-├── CMakeLists.txt              # 唯一 CMake 入口（统一聚合所有源码）
+├── docs/                       # 架构与目录说明文档
+├── CMakeLists.txt              # CMake 入口（支持 PRODUCT/BOARD/APP 选择）
 └── arm-none-eabi.cmake         # 工具链配置
 ```
 
-> 说明：当前仓库**不使用** `platform/CMakeLists.txt` 子目录编排，
-> 平台层源码由顶层 `CMakeLists.txt` 统一收集与链接。
+> 说明：当前仓库仍以顶层 `CMakeLists.txt` 聚合源码为主，
+> 已支持产品配置入口（`projects/<product>/project.cmake`）。
 
 ## 快速开始
 
@@ -34,9 +36,17 @@ gd32F303_Cmake/
 
 ```bash
 mkdir build && cd build
-cmake -DCMAKE_TOOLCHAIN_FILE=../arm-none-eabi.cmake ..
+cmake -DCMAKE_TOOLCHAIN_FILE=../arm-none-eabi.cmake \
+      -DPRODUCT=demo_product \
+      -DBOARD=demo_board \
+      -DAPP=demo_flash ..
 make
 ```
+
+说明：
+
+- `PRODUCT` 默认 `demo_product`
+- `BOARD/APP` 可不传，默认取 `projects/demo_product/project.cmake`
 
 ### 烧录
 
@@ -59,7 +69,9 @@ openocd -f tools/gd32f303_cmsisdap.cfg -c "program build/Platform_Base_Project.e
 - **boards 层**：板级引脚与外设映射。
 - **app 层**：业务逻辑与应用入口。
 
-当前构建入口为仓库根目录 `CMakeLists.txt`，统一聚合上述目录源码并生成固件。
+当前构建入口为仓库根目录 `CMakeLists.txt`，支持 `PRODUCT -> BOARD/APP` 选择关系。
+
+详细架构说明见：`docs/architecture.md`
 
 ## GPIO 配置方式（推荐）
 
@@ -109,7 +121,7 @@ openocd -f tools/gd32f303_cmsisdap.cfg -c "program build/Platform_Base_Project.e
 
 ## Demo 测试（SFUD）
 
-`app/demo_flash/src/main.c` 已切换为 SFUD 测试流程：
+`app/demo_flash/src/app_demo_flash.c` 提供 SFUD 测试流程（由 `main.c` 调用应用入口）：
 
 1. 调用 `sfud_init()`
 2. 通过 `sfud_get_device(SFUD_EXT_FLASH_DEVICE_INDEX)` 获取外部 Flash

@@ -9,9 +9,54 @@ include(${CMAKE_TOOLCHAIN_FILE})
 # 2. 项目定义
 project(Platform_Base_Project C ASM)
 
-# Fixed target selection (single-chip GD32F303)
-set(BOARD demo_board CACHE STRING "Board name under boards/")
-set(APP demo_flash CACHE STRING "App name under app/")
+# 产品/板级/应用选择
+set(PRODUCT demo_product CACHE STRING "Product name under projects/")
+set(BOARD "" CACHE STRING "Board name under boards/ (optional override)")
+set(APP "" CACHE STRING "App name under app/ (optional override)")
+
+if(NOT EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/projects/${PRODUCT}")
+    message(FATAL_ERROR "Product not found: projects/${PRODUCT}")
+endif()
+
+set(PRODUCT_CONFIG_FILE "${CMAKE_CURRENT_SOURCE_DIR}/projects/${PRODUCT}/project.cmake")
+if(EXISTS "${PRODUCT_CONFIG_FILE}")
+    include("${PRODUCT_CONFIG_FILE}")
+else()
+    message(WARNING "Product config not found: ${PRODUCT_CONFIG_FILE}, fallback to defaults")
+endif()
+
+if(DEFINED PRODUCT_COMPILE_DEFINITIONS)
+    add_definitions(${PRODUCT_COMPILE_DEFINITIONS})
+endif()
+
+set(_default_board demo_board)
+set(_default_app demo_flash)
+
+if(DEFINED PRODUCT_BOARD)
+    set(_default_board "${PRODUCT_BOARD}")
+endif()
+
+if(DEFINED PRODUCT_APP)
+    set(_default_app "${PRODUCT_APP}")
+endif()
+
+if(NOT BOARD)
+    set(BOARD "${_default_board}" CACHE STRING "Board name under boards/" FORCE)
+endif()
+
+if(NOT APP)
+    set(APP "${_default_app}" CACHE STRING "App name under app/" FORCE)
+endif()
+
+if(NOT EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/boards/${BOARD}")
+    message(FATAL_ERROR "Board not found: boards/${BOARD}")
+endif()
+
+if(NOT EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/app/${APP}")
+    message(FATAL_ERROR "App not found: app/${APP}")
+endif()
+
+message(STATUS "Build selection: PRODUCT=${PRODUCT}, BOARD=${BOARD}, APP=${APP}")
 
 # 3. GD32F30x 芯片配置
 set(CPU_FLAGS "-mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=hard")
@@ -56,22 +101,23 @@ include_directories(
 # 7. 汇总源码
 # L5/L3 通用源码
 file(GLOB_RECURSE COMMON_SOURCES "platform/utils/*.c")
-file(GLOB_RECURSE DRIVER_SOURCES "platform/drivers/**/*.c")
+file(GLOB_RECURSE DRIVER_SOURCES "platform/drivers/*.c")
 
-# L1 MHAL 通用层源码（新增的通用逻辑层）
+# HAL 通用层源码
 set(HAL_COMMON_SOURCES
     platform/hal/src/hal_gpio.c
     platform/hal/src/hal_spi.c
 )
 
-# 产品特定代码
-set(APP_SOURCES
-    app/${APP}/src/main.c
-)
+file(GLOB APP_SOURCES "app/${APP}/src/*.c")
+if(NOT APP_SOURCES)
+    message(FATAL_ERROR "No app sources found under app/${APP}/src")
+endif()
 
-set(BOARD_SOURCES
-    boards/${BOARD}/board.c
-)
+file(GLOB BOARD_SOURCES "boards/${BOARD}/*.c")
+if(NOT BOARD_SOURCES)
+    message(FATAL_ERROR "No board sources found under boards/${BOARD}")
+endif()
 
 # 8. 生成可执行文件
 add_executable(${PROJECT_NAME}.elf
