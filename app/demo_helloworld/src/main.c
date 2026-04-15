@@ -1,6 +1,6 @@
 #include "hal_gpio.h"
 #include "hal_delay.h"
-#include "rtt_log_compat.h"
+#include "log/rtt_log_compat.h"
 
 int main(void)
 {

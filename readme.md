@@ -139,7 +139,7 @@ openocd -f tools/gd32f303_cmsisdap.cfg -c "program build/Platform_Base_Project.e
 
 ## 日志系统（RTT）与日志等级
 
-当前工程日志基于 `platform/utils/rtt_log_compat.h` 的 `LOG_E/LOG_W/LOG_I/LOG_D` 宏。
+当前工程日志基于 `platform/utils/log/rtt_log_compat.h` 的 `LOG_E/LOG_W/LOG_I/LOG_D` 宏。
 
 日志等级由 `LOG_LEVEL` 控制，含义如下：
 

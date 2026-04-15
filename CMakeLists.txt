@@ -90,6 +90,8 @@ set(CMAKE_EXE_LINKER_FLAGS "${CPU_FLAGS} -T${MCU_LINKER_SCRIPT} -Wl,--gc-section
 include_directories(
     platform/hal/inc
     platform/utils
+    platform/utils/init
+    platform/utils/log
     platform/drivers/sfud
     platform/drivers/sfud/inc
     boards/${BOARD}

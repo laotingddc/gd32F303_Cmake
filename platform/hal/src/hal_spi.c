@@ -1,5 +1,5 @@
 #include "hal_spi.h"
-#include "auto_init.h"
+#include "init/auto_init.h"
 
 /* 板级 SPI 配置：直接在本文件展开，避免跨文件 extern 依赖 */
 static const hal_spi_cfg_t s_board_spi_cfg[] = {

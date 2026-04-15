@@ -1,8 +1,8 @@
 #ifndef RTT_LOG_COMPAT_H
 #define RTT_LOG_COMPAT_H
 
-#include "rtt_log.h"
-#include "SEGGER_RTT.h"
+#include "log/rtt_log.h"
+#include "log/SEGGER_RTT.h"
 
 #ifndef LOG_ENABLE
 #define LOG_ENABLE              1

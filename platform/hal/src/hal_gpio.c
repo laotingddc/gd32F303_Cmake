@@ -1,5 +1,5 @@
 #include "hal_gpio.h"
-#include "auto_init.h"
+#include "init/auto_init.h"
 
 // 板级 GPIO 配置：直接在本文件展开，避免跨文件 extern 依赖
 static const hal_gpio_cfg_t s_board_gpio_cfg[] = {

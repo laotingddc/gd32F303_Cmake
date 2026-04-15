@@ -1,6 +1,6 @@
-﻿#include "rtt_log.h"
+﻿#include "log/rtt_log.h"
 
-#include "SEGGER_RTT.h"
+#include "log/SEGGER_RTT.h"
 
 #include <stdbool.h>
 #include <stdarg.h>

@@ -1,4 +1,4 @@
-#include "auto_init.h"
+#include "init/auto_init.h"
 #include "board.h"
 #include "systick.h"
 

@@ -1,6 +1,6 @@
 #ifndef APP_DEMO_FLASH_H
 #define APP_DEMO_FLASH_H
-#include "rtt_log_compat.h"
+#include "log/rtt_log_compat.h"
 
 /*
  * demo_flash 应用入口：

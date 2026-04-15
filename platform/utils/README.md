@@ -4,10 +4,11 @@ This folder is intended to be copied into new CMake-based MCU projects.
 
 ## Contents
 
-- `auto_init.h`: section-based auto registration macros.
-- `rtt_log.h`: minimal RTT logging API.
-- `rtt_log_compat.h`: optional `LOG_E/LOG_I/...` shim for existing code.
-- `SEGGER_RTT*.c/.h`: vendored RTT implementation.
+- `init/auto_init.h`: section-based auto registration macros.
+- `log/rtt_log.h`: minimal RTT logging API.
+- `log/rtt_log_compat.h`: optional `LOG_E/LOG_I/...` shim for existing code.
+- `log/SEGGER_RTT*.c/.h`: vendored RTT implementation.
+- `fsm/tfsm.c/.h`: table-driven finite state machine module.
 
 ## Integration notes
 

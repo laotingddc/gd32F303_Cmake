@@ -31,7 +31,7 @@
 #include <stdio.h>
 #include "hal_spi.h"
 #include "hal_delay.h"
-#include "rtt_log_compat.h"
+#include "log/rtt_log_compat.h"
 static char log_buf[256];
 
 typedef struct {
@@ -156,6 +156,7 @@ void sfud_log_info(const char *format, ...) {
 
     va_end(args);
 }
+
 
 
 
