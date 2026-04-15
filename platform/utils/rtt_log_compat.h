@@ -19,7 +19,7 @@
 #endif
 
 #ifndef LOG_PRINT_FILE_LINE
-#define LOG_PRINT_FILE_LINE     1
+#define LOG_PRINT_FILE_LINE     0
 #endif
 
 #ifndef LOG_RTT_BUFFER

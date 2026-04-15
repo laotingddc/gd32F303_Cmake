@@ -125,6 +125,28 @@ openocd -f tools/gd32f303_cmsisdap.cfg -c "program build/Platform_Base_Project.e
 
 说明 SPI 与 SFUD 端口链路已打通。
 
+## 日志系统（RTT）与日志等级
+
+当前工程日志基于 `platform/utils/rtt_log_compat.h` 的 `LOG_E/LOG_W/LOG_I/LOG_D` 宏。
+
+日志等级由 `LOG_LEVEL` 控制，含义如下：
+
+- `0 = 全关`（`LOG_LEVEL_NONE`）
+- `1 = 只看错误`（`LOG_LEVEL_ERROR`）
+- `2 = 错误 + 警告`（`LOG_LEVEL_WARN`）
+- `3 = 错误 + 警告 + 信息`（`LOG_LEVEL_INFO`）
+- `4 = 全开（含调试）`（`LOG_LEVEL_DEBUG`）
+
+默认配置为：
+
+```c
+#ifndef LOG_LEVEL
+#define LOG_LEVEL LOG_LEVEL_DEBUG
+#endif
+```
+
+即默认输出全部等级日志。若需要降低日志量，可在项目编译选项或公共头文件中将 `LOG_LEVEL` 改为 `LOG_LEVEL_INFO` / `LOG_LEVEL_WARN` 等。
+
 ## 贡献指南
 
 - 所有文本文件（如 `*.c`、`*.h`、`CMakeLists.txt`、`*.md`）统一使用 **UTF-8** 编码保存，避免出现乱码与编码漂移。
