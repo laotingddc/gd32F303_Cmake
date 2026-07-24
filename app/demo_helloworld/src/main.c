@@ -1,17 +1,14 @@
-#include "hal_gpio.h"
-#include "hal_delay.h"
-#include "log/rtt_log_compat.h"
+#include "app_demo_helloworld.h"
 
 int main(void)
 {
-    LOG_I("Hello World!");
-
-    while (1) {
-        hal_gpio_id_toggle(HAL_GPIO_ID_BOARD_LED);
-        hal_gpio_id_toggle(HAL_GPIO_ID_LED_DATA);
-        hal_gpio_id_toggle(HAL_GPIO_ID_LED_STATUS);
-        hal_delay_ms(500);
+    if (app_demo_helloworld_init() != 0) {
+        LOG_E("demo_helloworld init failed");
+        while (1) {
+        }
     }
+
+    app_demo_helloworld_run();
 
     return 0;
 }
